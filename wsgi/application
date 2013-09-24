@@ -10,3 +10,5 @@ except IOError:
     pass
  
 from fikrposdc import app as application
+from fikrposdc import *
+db.create_all()
