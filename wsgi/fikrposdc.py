@@ -20,6 +20,18 @@ class Todo(db.Model):
         self.text = text
         self.done = False
         self.pub_date = datetime.utcnow()
+
+class Users(db.Model):
+    __tablename__ = 'users'
+    id = db.Column('user_id', db.Integer, primary_key=True)
+    username = db.Column(db.String(60))
+    password = db.Column(db.String)
+    active = db.Column(db.Boolean)
+ 
+    def __init__(self, username, password):
+        self.username = username
+        self.password = password
+        self.active = true
  
 @app.route('/')
 def index():
