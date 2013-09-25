@@ -1,0 +1,110 @@
+--
+-- PostgreSQL database dump
+--
+
+SET statement_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SET check_function_bodies = false;
+SET client_min_messages = warning;
+
+--
+-- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: 
+--
+
+CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
+
+
+--
+-- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
+--
+
+COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
+
+
+SET search_path = public, pg_catalog;
+
+SET default_tablespace = '';
+
+SET default_with_oids = false;
+
+--
+-- Name: todos; Type: TABLE; Schema: public; Owner: admin9pe8kyf; Tablespace: 
+--
+
+CREATE TABLE todos (
+    todo_id integer NOT NULL,
+    title character varying(60),
+    text character varying,
+    done boolean,
+    pub_date timestamp without time zone
+);
+
+
+ALTER TABLE public.todos OWNER TO admin9pe8kyf;
+
+--
+-- Name: todos_todo_id_seq; Type: SEQUENCE; Schema: public; Owner: admin9pe8kyf
+--
+
+CREATE SEQUENCE todos_todo_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.todos_todo_id_seq OWNER TO admin9pe8kyf;
+
+--
+-- Name: todos_todo_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: admin9pe8kyf
+--
+
+ALTER SEQUENCE todos_todo_id_seq OWNED BY todos.todo_id;
+
+
+--
+-- Name: todo_id; Type: DEFAULT; Schema: public; Owner: admin9pe8kyf
+--
+
+ALTER TABLE ONLY todos ALTER COLUMN todo_id SET DEFAULT nextval('todos_todo_id_seq'::regclass);
+
+
+--
+-- Data for Name: todos; Type: TABLE DATA; Schema: public; Owner: admin9pe8kyf
+--
+
+COPY todos (todo_id, title, text, done, pub_date) FROM stdin;
+\.
+
+
+--
+-- Name: todos_todo_id_seq; Type: SEQUENCE SET; Schema: public; Owner: admin9pe8kyf
+--
+
+SELECT pg_catalog.setval('todos_todo_id_seq', 1, false);
+
+
+--
+-- Name: todos_pkey; Type: CONSTRAINT; Schema: public; Owner: admin9pe8kyf; Tablespace: 
+--
+
+ALTER TABLE ONLY todos
+    ADD CONSTRAINT todos_pkey PRIMARY KEY (todo_id);
+
+
+--
+-- Name: public; Type: ACL; Schema: -; Owner: postgres
+--
+
+REVOKE ALL ON SCHEMA public FROM PUBLIC;
+REVOKE ALL ON SCHEMA public FROM postgres;
+GRANT ALL ON SCHEMA public TO postgres;
+GRANT ALL ON SCHEMA public TO PUBLIC;
+
+
+--
+-- PostgreSQL database dump complete
+--
+
