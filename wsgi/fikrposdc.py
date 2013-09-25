@@ -1,10 +1,10 @@
 from datetime import datetime
-from flask import Flask
+from flask import Flask, request, flash, url_for, redirect, render_template, abort
 from flask_sqlalchemy import SQLAlchemy
  
 app = Flask(__name__)
 
-app.config.from_pyfile('fikrposdc.cfg')
+app.config.from_pyfile('app.cfg')
 db = SQLAlchemy(app)
  
 class Todo(db.Model):
@@ -22,9 +22,19 @@ class Todo(db.Model):
         self.pub_date = datetime.utcnow()
  
 @app.route('/')
-@app.route('/hello')
 def index():
-    return "Hello from OpenShift"
+    return render_template('index.html', todos=Todo.query.order_by(Todo.pub_date.desc()).all())
  
+
+@app.route('/new', methods=['GET', 'POST'])
+def new():
+    if request.method=='POST':
+        todo = Todo(request.form['title'], request.form['text'])
+        db.session.add(todo)
+        db.session.commit()
+        return redirect(url_for('index'))
+    return render_template('new.html')
+               
+
 if __name__ == '__main__':
     app.run()
