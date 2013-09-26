@@ -7,56 +7,58 @@ app = Flask(__name__)
 app.config.from_pyfile('app.cfg')
 db = SQLAlchemy(app)
  
-class Todo(db.Model):
-    __tablename__ = 'todos'
-    id = db.Column('todo_id', db.Integer, primary_key=True)
-    title = db.Column(db.String(60))
-    text = db.Column(db.String)
-    done = db.Column(db.Boolean)
-    pub_date = db.Column(db.DateTime)
- 
-    def __init__(self, title, text):
-        self.title = title
-        self.text = text
-        self.done = False
-        self.pub_date = datetime.utcnow()
-
 class Users(db.Model):
     __tablename__ = 'users'
     id = db.Column('user_id', db.Integer, primary_key=True)
     username = db.Column(db.String(60))
     password = db.Column(db.String)
+    email = db.Column(db.String(100))
+    role = db.Column(db.String(20))
     active = db.Column(db.Boolean)
  
-    def __init__(self, username, password):
+    def __init__(self, username, password, email):
         self.username = username
+        self.email = email
         self.password = password
-        self.active = true
+        self.active = True
+        self.role = 'Admin'
+
  
+
 @app.route('/')
 def index():
-    return render_template('index.html', todos=Todo.query.order_by(Todo.pub_date.desc()).all())
- 
+    return render_template('index.html')
 
-@app.route('/new', methods=['GET', 'POST'])
-def new():
+@app.route('/manage/users')
+def manage_users():
+    return render_template('users.html', users=Users.query.order_by(Users.username).all())
+
+@app.route('/manage/users/new', methods=['GET', 'POST'])
+def new_user():
     if request.method=='POST':
-        todo = Todo(request.form['title'], request.form['text'])
-        db.session.add(todo)
+        user = Users(request.form['username'], request.form['email'], request.form['password'])
+        db.session.add(user)
         db.session.commit()
-        return redirect(url_for('index'))
+        return redirect(url_for('manage_users'))
     return render_template('new.html')
 
-@app.route('/todos/<int:todo_id>', methods=['GET','POST'])
-def show_or_update(todo_id):
-    todo_item = Todo.query.get(todo_id)
+@app.route('/manage/users/view/<int:user_id>', methods=['GET','POST'])
+def show_or_update(user_id):
+    user = Users.query.get(user_id)
     if request.method=='GET':
-        return render_template('view.html', todo=todo_item)
-    todo_item.title = request.form['title']
-    todo_item.text = request.form['text']
-    todo_item.done = ('done.%d' % todo_id) in request.form #what's this?
+        return render_template('view.html', user=user)
+    user.username = request.form['username']
+    user.email = request.form['email']
+    user.password = request.form['password']
     db.session.commit()
-    return redirect(url_for('index'))
+    return redirect(url_for('manage_users'))
+
+@app.route('/manage/users/delete/<int:user_id>', methods=['GET','POST'])
+def delete_user(user_id):
+    user = Users.query.get(user_id)
+    db.session.delete(user)
+    db.session.commit()
+    return redirect(url_for('manage_users'))
 
 if __name__ == '__main__':
     app.run()

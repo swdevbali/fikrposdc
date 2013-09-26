@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+{% block body %}
+<div id="main" class="container">
+    <h2>All users</h2>
+<p><a href="{{ url_for('new_user') }}" class="btn btn-large btn-primary">New User</a></p>
+    <table class="table table-hover">
+      <tr>
+        <th>#</th>
+        <th>Username</th>
+        <th>Email</th>
+        <th>Action</th>
+      {%- for user in users %}
+      <tr >
+        <td><a href="/manage/users/view/{{ user.id }}">{{ user.id }}</a>
+        <td>{{ user.username }}</td>
+        <td>{{ user.email }}</td>
+        <td>
+        <div class="pull-right">
+                <ul class="nav pull-right">
+                    <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Modify <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/manage/users/view/{{ user.id }}"><i class="icon-cog"></i>Edit</a></li>
+                            <li><a href="#" onclick="deleteUser({{ user.id }})">Delete</a></li>
+                        </ul>
+                    </li>
+                </ul>
+              </div>
+
+</td>
+      {%- endfor %}
+    </table>
+</div>
+{% endblock %}
