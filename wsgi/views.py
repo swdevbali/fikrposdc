@@ -1,4 +1,6 @@
 from main import app
+from flask import render_template, request, flash, url_for, redirect, abort
+from main import db
 import models
 
 @app.route('/')
