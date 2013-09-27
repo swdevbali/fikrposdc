@@ -9,6 +9,6 @@ try:
 except IOError:
     pass
  
-from fikrposdc import app as application
-from fikrposdc import *
+from main import app as application
+from main import *
 db.create_all()
