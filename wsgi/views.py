@@ -3,6 +3,8 @@ from flask import render_template, request, flash, url_for, redirect, abort
 from main import db
 import models
 import json
+import urllib
+import os
 
 @app.route('/')
 def index():
@@ -41,5 +43,8 @@ def delete_user(user_id):
 
 @app.route ('/dataset/users')
 def dataset_users():
-    aaData = {'sEcho':1,'iTotalRecords':57}
-    return json.dumps(aaData, sort_keys=True, indent=4)
+    DIRNAME = os.path.split(__file__)[0]
+    json_path = os.path.join(DIRNAME, "static/sample.json")
+    json_file = open(json_path).read()
+    json_data = json.loads(json_file)
+    return json.dumps(json_data)
