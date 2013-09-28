@@ -2,6 +2,7 @@ from main import app
 from flask import render_template, request, flash, url_for, redirect, abort
 from main import db
 import models
+import json
 
 @app.route('/')
 def index():
@@ -38,4 +39,7 @@ def delete_user(user_id):
     db.session.commit()
     return redirect(url_for('manage_users'))
 
-
+@app.route ('/dataset/users')
+def dataset_users():
+    aaData = {'sEcho':1,'iTotalRecords':57}
+    return json.dumps(aaData, sort_keys=True, indent=4)
