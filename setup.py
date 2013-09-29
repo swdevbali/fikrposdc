@@ -6,5 +6,11 @@ setup(name='Fikr POS DC',
       author='Eko Wibowo',
       author_email='swdev.bali@gmail.com',
       url='http://www.python.org/sigs/distutils-sig/',
-      install_requires=['Flask==0.10.1', 'MarkupSafe','Flask-SQLAlchemy==1.0'],
+      install_requires=
+      [
+        'Flask==0.10.1', 
+        'MarkupSafe',
+        'Flask-SQLAlchemy==1.0',
+        'simplejson==3.3.0'
+       ],
      )

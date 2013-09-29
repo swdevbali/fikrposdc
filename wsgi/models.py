@@ -1,7 +1,8 @@
 from flask_sqlalchemy import SQLAlchemy
 from main import db
+from collections import OrderedDict
 
-class Users(db.Model):
+class Users(db.Model,object):
     __tablename__ = 'users'
     id = db.Column('user_id', db.Integer, primary_key=True)
     username = db.Column(db.String(60), unique=True)
@@ -17,6 +18,15 @@ class Users(db.Model):
         self.password = password
         self.active = True
         self.role = 'Admin'
+
+    def _asdict(self):
+        '''
+        Thanks to http://stackoverflow.com/questions/7102754/jsonify-a-sqlalchemy-result-set-in-flask
+        '''
+        result = OrderedDict()
+        for key in self.__mapper__.c.keys():
+            result[key] = getattr(self, key)
+        return result
 
 class Branches(db.Model):
     __tablename__ = 'branches'

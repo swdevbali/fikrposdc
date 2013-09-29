@@ -1,10 +1,7 @@
 from main import app
-from flask import render_template, request, flash, url_for, redirect, abort
+from flask import render_template, request, flash, url_for, redirect, abort, jsonify
 from main import db
-import models
-import json
-import urllib
-import os
+import models, json,  os, string
 
 @app.route('/')
 def index():
@@ -43,8 +40,20 @@ def delete_user(user_id):
 
 @app.route ('/dataset/users')
 def dataset_users():
-    DIRNAME = os.path.split(__file__)[0]
-    json_path = os.path.join(DIRNAME, "static/sample.json")
-    json_file = open(json_path).read()
-    json_data = json.loads(json_file)
-    return json.dumps(json_data)
+    data = {}
+    data['iTotalRecords'] = 2
+    data['sEcho'] = 1
+    data['iTotalDisplayRecords'] =  2
+
+    aaData = []   
+    users=models.Users.query.with_entities(
+        models.Users.id, models.Users.username,
+        models.Users.email).order_by(models.Users.username).all()
+    for user in users:
+        aaData.append([string.join(['<a href="/manage/users/view/',`user.id`,'">', `user.id`, '</a>'],''), user.username, user.email, 'Modify'])
+    
+    data['aaData']=aaData
+    return json.dumps(data)
+
+
+
