@@ -14,7 +14,7 @@
    Dari server sudah bisa ngedump ke lokal, dan sudah bisa diimport di klien : ini tidak perlu lagi, karena ada db.create_all() dari SQLAlchemy
    
 ** DONE [002] Users CRUD
-** [003] Branch management
+** TODO [003] Branch management
    Diperlukan untuk tempat penyimpanan semua data transaksi/reporting dari branch
    Tiap branch akan punya user yang menjadi admin dari branch ini (attach ke user)   
    Saat pengiriman, token yang harus dikirimkan adalah username + password + branch_id, akan gagal jika user tidak menjadi admin dari branch tersebut [004]
@@ -23,8 +23,9 @@
    Klien mengirimkan username dan password via json ke server herokuapp
    Server menerima dan mencocokkannya dengan database, mengirimkan json true/false jika benar.
    URL /api/log/in/{username}/{encyrpted password}
-** [005] Gunakan Admin Dashboard
-   Buat template u/ CRUD paginated table
-** TODO [006] Tambahkan konsep Company, sehingga aplikasi ini bisa menjadi solusi cloud
-   Company->Branch   
+** DONE [005] Gunakan Admin Dashboard
+** DONE [006] Tambahkan konsep Company, sehingga aplikasi ini bisa menjadi solusi cloud
+** Buat template u/ CRUD paginated table
 ** Pengiriman report data transaksi harian
+
+

@@ -14,7 +14,7 @@ def index():
 
 @app.route('/manage/users')
 def manage_users():
-    return render_template('users.html', users=models.Users.query.order_by(models.Users.username).all())
+    return render_template('users/list.html', users=models.Users.query.order_by(models.Users.username).all())
 
 @app.route('/manage/users/new', methods=['GET', 'POST'])
 def new_user():
@@ -23,13 +23,13 @@ def new_user():
         db.session.add(user)
         db.session.commit()
         return redirect(url_for('manage_users'))
-    return render_template('view.html', user=None)
+    return render_template('users/form.html', user=None)
 
 @app.route('/manage/users/view/<int:user_id>', methods=['GET','POST'])
 def show_or_update(user_id):
     user = models.Users.query.get(user_id)
     if request.method=='GET':
-        return render_template('view.html', user=user)
+        return render_template('users/form.html', user=user)
     user.username = request.form['username']
     user.email = request.form['email']
     user.password = request.form['password']
@@ -70,4 +70,4 @@ def manage_company():
         db.session.commit()
         flash('success')
         return redirect(url_for('manage_company'))
-    return render_template('company.html', company=models.Companies.query.get(1)) #todo for active company
+    return render_template('companies/form.html', company=models.Companies.query.get(1)) #todo for active company
