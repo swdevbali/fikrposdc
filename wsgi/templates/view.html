@@ -9,8 +9,7 @@
       <!-- Username -->
       <label class="control-label"  for="username">Username</label>
       <div class="controls">
-        <input type="text" id="username" name="username" placeholder="" class="input-xlarge" value="{{ user.username }}">
-        <p class="help-block">Username can contain any letters or numbers, without spaces</p>
+        <input type="text" id="username" name="username" placeholder="Username can contain any letters or numbers, without spaces" class="input-xlarge" value="{{ user.username }}">
       </div>
     </div>
  
@@ -18,8 +17,7 @@
       <!-- E-mail -->
       <label class="control-label" for="email">E-mail</label>
       <div class="controls">
-        <input type="text" id="email" name="email" placeholder="" class="input-xlarge" value="{{ user.email }}">
-        <p class="help-block">Please provide your E-mail</p>
+        <input type="text" id="email" name="email" placeholder="Please provide your E-mail" class="input-xlarge" value="{{ user.email }}">
       </div>
     </div>
  
@@ -27,8 +25,7 @@
       <!-- Password-->
       <label class="control-label" for="password">Password</label>
       <div class="controls">
-        <input type="password" id="password" name="password" placeholder="" class="input-xlarge" value="{{ user.password }}">
-        <p class="help-block">Password should be at least 4 characters</p>
+        <input type="password" id="password" name="password" placeholder="Password should be at least 4 characters" class="input-xlarge" value="{{ user.password }}">
       </div>
     </div>
  
@@ -36,15 +33,15 @@
       <!-- Password -->
       <label class="control-label"  for="password_confirm">Password (Confirm)</label>
       <div class="controls">
-        <input type="password" id="password_confirm" name="password_confirm" placeholder="" class="input-xlarge" value="{{ user.password }}>
-        <p class="help-block">Please confirm password</p>
+        <input type="password" id="password_confirm" name="password_confirm" placeholder="Please confirm password" class="input-xlarge" value="{{ user.password }}">
       </div>
     </div>
  
     <div class="control-group">
       <!-- Button -->
       <div class="controls">
-        <button class="btn btn-success">Update</button>&nbsp;<a href="{{ url_for('manage_users') }}">Back to list</a>
+        <button class="btn btn-success">Update</button>
+        <a href="/manage/users" class="btn">Cancel</a>
       </div>
     </div>
   </fieldset>

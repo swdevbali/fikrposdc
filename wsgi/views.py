@@ -23,7 +23,7 @@ def new_user():
         db.session.add(user)
         db.session.commit()
         return redirect(url_for('manage_users'))
-    return render_template('new.html')
+    return render_template('view.html', user=None)
 
 @app.route('/manage/users/view/<int:user_id>', methods=['GET','POST'])
 def show_or_update(user_id):
