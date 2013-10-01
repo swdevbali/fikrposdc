@@ -2,6 +2,12 @@ from main import app, db
 from flask import render_template, request, flash, url_for, redirect, abort, jsonify
 import models, json,  os, string
 
+'''Helper'''
+def redirect_url(default='index'):
+    return request.args.get('next') or \
+           request.referrer or \
+           url_for(default).route('/')
+
 @app.route('/')
 def index():
     return render_template('index.html')
@@ -54,5 +60,14 @@ def dataset_users():
     data['aaData']=aaData
     return json.dumps(data)
 
-
-
+@app.route('/manage/company', methods=['GET', 'POST'])
+def manage_company():
+    if request.method=='POST':
+        company = models.Companies.query.get(request.form['id'])
+        company.name = request.form['name']
+        company.address = request.form['address']
+        company.token = request.form['token']
+        db.session.commit()
+        flash('success')
+        return redirect(url_for('manage_company'))
+    return render_template('company.html', company=models.Companies.query.get(1)) #todo for active company

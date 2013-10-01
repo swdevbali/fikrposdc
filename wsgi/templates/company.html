@@ -1,0 +1,60 @@
+{% extends "layout.html" %}
+{% block body %}
+
+<form class="form-horizontal" action='' method="POST">
+    <input type="hidden" id="id" name="id" value="{{ company.id }}"/>
+  <fieldset>
+    <div id="legend">
+      <legend class="">Company Profile</legend>
+    </div>
+
+    <div class="control-group">
+      <label class="control-label"  for="name">Name</label>
+      <div class="controls">
+        <input type="text" id="name" name="name" placeholder="" class="input-xlarge" value="{{ company.name }}">
+      </div>
+    </div>
+ 
+    <div class="control-group">
+      <label class="control-label" for="email">Address</label>
+      <div class="controls">
+          <textarea class="span4" id="address" name="address" placeholder="Official company address" rows="5">{{ company.address }}</textarea>
+      </div>
+    </div>
+ 
+
+    <div class="control-group">
+      <label class="control-label"  for="token">Token</label>
+      <div class="controls">
+          <input type="text" id="token" name="token" placeholder="" class="input-xlarge" value="{{ company.token }}">
+        <p class="help-block">Token is use to identify a POS installation</p>
+      </div>
+    </div>
+ 
+    <div class="control-group">
+      <!-- Button -->
+      <div class="controls">
+        <button class="btn btn-success">Update</button>
+        <button class="btn btn-cancel" onclick="history.go(-1);" type="button">Cancel</button>        
+      </div>
+    </div>
+  </fieldset>
+</form>
+{% endblock %}
+
+{% block hook_endscript %}
+<script>
+    $(function(){
+        
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        {% for message in messages %}
+        $('.notifications').notify({ message: { text: "{{ message }}" }, 
+                                    type: "{{ message }}" ,
+                                    fadeOut: { enabled: true, delay: 2000 }}).show();
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+    });
+</script>
+{% endblock %}
