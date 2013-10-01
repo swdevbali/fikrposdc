@@ -8,4 +8,8 @@ db = SQLAlchemy(app)
 import models, views 
 
 if __name__ == '__main__':
-    app.run()
+    from main import app as application
+    from main import *
+    print ' - Create DB and run application..'
+    db.create_all()
+    app.run(debug=True)

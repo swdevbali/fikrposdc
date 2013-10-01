@@ -1,6 +1,5 @@
-from main import app
+from main import app, db
 from flask import render_template, request, flash, url_for, redirect, abort, jsonify
-from main import db
 import models, json,  os, string
 
 @app.route('/')
