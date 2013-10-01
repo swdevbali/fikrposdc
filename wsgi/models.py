@@ -2,7 +2,22 @@ from flask_sqlalchemy import SQLAlchemy
 from main import db
 from collections import OrderedDict
 
+
+class Company(db.Model):
+    '''
+    Parent data to let this solution be applied to many company
+    '''
+    __tablename__ = 'companies'
+    id = db.Column('company_id', db.Integer, primary_key=True)
+    name = db.Column(db.String(100), unique=True)
+    address = db.Column(db.String)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.user_id')) #User must register first
+    token = db.Column(db.String) #for identification of client
+
 class Users(db.Model,object):
+    '''
+    Adding object to trun sqlalchemy into json object
+    '''
     __tablename__ = 'users'
     id = db.Column('user_id', db.Integer, primary_key=True)
     username = db.Column(db.String(60), unique=True)

@@ -25,7 +25,7 @@
    URL /api/log/in/{username}/{encyrpted password}
 ** [005] Gunakan Admin Dashboard
    Buat template u/ CRUD paginated table
-** [006] Tambahkan konsep Company, sehingga aplikasi ini bisa menjadi solusi cloud
+** TODO [006] Tambahkan konsep Company, sehingga aplikasi ini bisa menjadi solusi cloud
    Company->Branch
    That's all!
 ** Pengiriman report data transaksi harian
