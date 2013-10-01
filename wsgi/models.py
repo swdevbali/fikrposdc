@@ -3,7 +3,7 @@ from main import db
 from collections import OrderedDict
 
 
-class Company(db.Model):
+class Companies(db.Model):
     '''
     Parent data to let this solution be applied to many company
     '''
@@ -13,6 +13,12 @@ class Company(db.Model):
     address = db.Column(db.String)
     user_id = db.Column(db.Integer, db.ForeignKey('users.user_id')) #User must register first
     token = db.Column(db.String) #for identification of client
+    
+    def __init__(self, name, address, user_id, token):
+        self.nama = name
+        self.address = address
+        self.user_id = user_id
+        self.token = token
 
 class Users(db.Model,object):
     '''
