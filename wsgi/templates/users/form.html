@@ -1,6 +1,7 @@
 {% extends "layout.html" %}
 {% block body %}
-<form class="form-horizontal" action='' method="POST">
+<form class="form-horizontal" action='{{ url_for('UserView:post') }}' method="POST">
+    <input type="hidden" id="id" name="id" value="{{ user.id }}"/>
   <fieldset>
     <div id="legend">
       <legend class="">Edit user</legend>

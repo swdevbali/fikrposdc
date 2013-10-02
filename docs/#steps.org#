@@ -1,0 +1,38 @@
+* Komponen
+** Server Python on Redhat Openshift
+   Menerima kiriman rekap transaksi harian
+   Menyediakan data terpusat dari laporan transaksi semua branches.  
+   Menampilkan laporan secara grafik yang informatif
+   Menggunakan Pyramid + PostgreSQL di Herokuapp
+   Berkomunikasi ke klien via JSON
+** Klien C# Desktop run on Windows
+  Mengirimkan data transaksi ke pusat
+  Berkomunikasi ke server via JSON
+* User Cards
+** DONE [001] Aplikasi Fikrposdc run locally and synched to Cloud, vice versa
+   Aplikasi sudah bisa berjalan baik secara lokal/cloud : db dibuat setiap run
+   Dari server sudah bisa ngedump ke lokal, dan sudah bisa diimport di klien : ini tidak perlu lagi, karena ada db.create_all() dari SQLAlchemy
+   
+** DONE [002] Users CRUD
+** DONE [005] Gunakan Admin Dashboard
+** DONE [006] Tambahkan konsep Company, sehingga aplikasi ini bisa menjadi solusi cloud
+** [004] Verifikasi ID dari Client ke Server
+   Klien mengirimkan username dan password via json ke server herokuapp
+   Server menerima dan mencocokkannya dengan database, mengirimkan json true/false jika benar.
+   URL /api/log/in/{username}/{encyrpted password}
+** [007] Scenario pemakai baru : register user dan register company
+** [008] Scenario login
+** TODO [003] Branch management
+   Diperlukan untuk tempat penyimpanan semua data transaksi/reporting dari branch
+   Tiap branch akan punya user yang menjadi admin dari branch ini (attach ke user)   
+   Saat pengiriman, token yang harus dikirimkan adalah username + password + branch_id, akan gagal jika user tidak menjadi admin dari branch tersebut [004]
+   Banyak branch.. satu user aja. Satu user hanya boleh manage satu branch   
+** Sempurnakan CRUD paginated table
+*** DONE Menggunakan ajax u/ penghapusan data
+*** DONE Reload via AJAX
+*** Paginasi
+*** Search box
+** Pengiriman report data transaksi harian
+
+
+
