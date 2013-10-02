@@ -31,13 +31,40 @@
 
 {% block hook_endscript %}
 <script src="/static/vendors/datatables/js/jquery.dataTables.min.js"></script>
-        <script>
-            $(document).ready(function() {
-                $('#example').dataTable( {
-                    "bProcessing": true,
-                    "bServerSide": true,
-                    "sAjaxSource": "/dataset/branches"
+<script src="/static/assets/fnreloadajax.js"></script>
+<script>
+    $.ajaxSetup ({  
+        cache: false  
+    });    
+    var ajax_load = "<img src='/static/assets/img/load.gif' alt='Processing..' />"; 
+
+    $(document).ready(function() {
+        $('#example').dataTable( {
+            "bProcessing": false,
+            "bServerSide": false,
+            "sAjaxSource": "{{ url_for('DataSet:branches') }}",
+            "fnDrawCallback": function (oSettings) {
+                $("a[id^='remove_branch']").click(function(e){  
+                    var id = $(e.target).parent().attr('id').split('_')[2];
+                    var row = $(e.target).parent().parent().parent();
+                    bootbox.confirm("Are you sure?", function(result) {                        
+                        if(result)
+                        {
+                            var processingUrl = "/manage/branches/apidelete/" + id;
+                            $.getJSON(  
+                                processingUrl,  
+                                {},  
+                                function(json) {  
+                                    var table = $('#example').dataTable();
+                                    table.fnReloadAjax();                                
+                                }  
+                            );
+                        }                        
+                    });
+                    
                 });
-            } );
-        </script>
+            }
+        });
+    });
+</script>
 {% endblock %}

@@ -11,4 +11,8 @@ except IOError:
  
 from main import app as application
 from main import *
+
+if app.config['DEVELOPMENT_MODE']:
+    db.drop_all()
+
 db.create_all()

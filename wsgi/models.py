@@ -54,9 +54,11 @@ class Branches(db.Model):
     name = db.Column(db.String(255), unique=True)
     address = db.Column(db.String)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+    token = db.Column(db.String) #for identification of client
     company_id = db.Column(db.Integer, db.ForeignKey('companies.id')) #User must register first
 
-    def __init__(self, name, address, user_id):
+    def __init__(self, name, address, token, user_id):
         self.name = name
         self.address = address
+        self.token = token
         self.user_id = user_id

@@ -20,8 +20,8 @@ class DbTest(unittest.TestCase):
         assert company1.user_id == user1.id
 
         """branches"""
-        company1.branches.append(models.Branches(name='Kopjar',address='Penjara Malaysia', user_id=user1.id))
-        company1.branches.append(models.Branches(name='Selangor',address='Koperasi Selangor', user_id=user1.id))        
+        company1.branches.append(models.Branches(name='Kopjar',address='Penjara Malaysia', token='empty token', user_id=user1.id))
+        company1.branches.append(models.Branches(name='Selangor',address='Koperasi Selangor', token='empty token',  user_id=user1.id))        
         db.session.commit()
         
         #assert branch1.company_id == branch2.company_id;
