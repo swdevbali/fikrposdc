@@ -11,6 +11,7 @@ setup(name='Fikr POS DC',
         'Flask==0.10.1', 
         'MarkupSafe',
         'Flask-SQLAlchemy==1.0',
-        'simplejson==3.3.0'
+        'simplejson==3.3.0',
+        'flask-classy'
        ],
      )
