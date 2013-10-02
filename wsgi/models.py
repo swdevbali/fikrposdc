@@ -40,7 +40,7 @@ class Companies(db.Model):
     address = db.Column(db.String)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id')) #User must register first
     token = db.Column(db.String) #for identification of client
-    branches = db.relationship("Branches", primaryjoin="Companies.id==Branches.company_id")
+    branches = db.relationship("Branches")
 
 
     def __init__(self, name, address, user_id, token):

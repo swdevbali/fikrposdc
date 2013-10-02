@@ -14,7 +14,7 @@ def index():
 
 @app.route('/manage/users')
 def manage_users():
-    return render_template('users/list.html', users=models.Users.query.order_by(models.Users.username).all())
+    return render_template('users/list.html')
 
 @app.route('/manage/users/new', methods=['GET', 'POST'])
 def new_user():
@@ -43,6 +43,15 @@ def delete_user(user_id):
     db.session.commit()
     return redirect(url_for('manage_users'))
 
+@app.route('/api/users/delete/<int:user_id>', methods=['GET'])
+def api_delete_user(user_id):
+    user = models.Users.query.get(user_id)
+    db.session.delete(user)
+    db.session.commit() #todo result
+    result = {}
+    result['result']='success'
+    return json.dumps(result)
+
 @app.route ('/dataset/users')
 def dataset_users():
     data = {}
@@ -55,7 +64,7 @@ def dataset_users():
         models.Users.id, models.Users.username,
         models.Users.email).order_by(models.Users.username).all()
     for user in users:
-        aaData.append([string.join(['<a href="/manage/users/view/',`user.id`,'">', `user.id`, '</a>'],''), user.username, user.email, 'Modify'])
+        aaData.append([user.username, user.email, string.join(['<a href="/manage/users/view/',`user.id`,'"><i class="icon-pencil"></i></a> <a id="remove_user_',`user.id`,'" href="#"><i class="icon-remove"></i></a>'],'')])
     
     data['aaData']=aaData
     return json.dumps(data)
@@ -71,3 +80,22 @@ def manage_company():
         flash('success')
         return redirect(url_for('manage_company'))
     return render_template('companies/form.html', company=models.Companies.query.get(1)) #todo for active company
+
+@app.route('/manage/branches/', methods=['GET', 'POST'])
+def manage_branches():
+    return render_template('branches/list.html')
+
+@app.route ('/dataset/branches')
+def dataset_branches():
+    data = {}
+    data['iTotalRecords'] = 2
+    data['sEcho'] = 1
+    data['iTotalDisplayRecords'] =  2    
+    
+    aaData = []   
+    company = models.Companies.query.get(1)    
+    for branch in company.branches:
+        aaData.append([string.join(['<a href="/manage/users/view/',`branch.id`,'">', `branch.id`, '</a>'],''), branch.name, branch.address, '<a href=""><i class="icon-pencil"></i></a>'])
+    
+    data['aaData']=aaData
+    return json.dumps(data)
