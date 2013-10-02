@@ -33,5 +33,6 @@
 *** Paginasi
 *** Search box
 ** Pengiriman report data transaksi harian
+** Select navigation of module
 
 

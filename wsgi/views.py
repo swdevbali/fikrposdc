@@ -48,6 +48,11 @@ class UserView(FlaskView):
         result['result']='success'
         return json.dumps(result)
 
+class BranchView(FlaskView):
+    route_base = '/manage/branches'
+
+    def index(self):
+        return render_template('branches/list.html')
 
 class DataSet(FlaskView):
     route_base = '/dataset'
@@ -95,11 +100,10 @@ class CompanyView:
             return redirect(url_for('manage_company'))
         return render_template('companies/form.html', company=models.Companies.query.get(1)) #todo for active company
 
-    @app.route('/manage/branches/', methods=['GET', 'POST'])
-    def manage_branches():
-        return render_template('branches/list.html')
+
 
 
 GeneralView.register(app)
 UserView.register(app)
+BranchView.register(app)
 DataSet.register(app)
