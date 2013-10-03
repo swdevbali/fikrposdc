@@ -1,5 +1,5 @@
-* Komponen
 ** Server Python on Redhat Openshift
+Komponen
    Menerima kiriman rekap transaksi harian
    Menyediakan data terpusat dari laporan transaksi semua branches.  
    Menampilkan laporan secara grafik yang informatif

@@ -1,7 +1,7 @@
 from main import app, db
 from flask import render_template, request, flash, url_for, redirect, abort, jsonify
 from flask.ext.classy import FlaskView
-import models, json,  os, string
+import models, json,  os, string, forms
 
 class GeneralView(FlaskView):
     route_base = '/'
@@ -15,24 +15,34 @@ class UserView(FlaskView):
         return render_template('users/list.html')
     
     def new(self):
-        return render_template('users/form.html', user=None)
+        form = forms.UserForm()
+        return render_template('users/form.html', form=form)
    
     def post(self):
-        if request.form['id']=='':
-            user = models.Users(request.form['username'], request.form['email'], request.form['password'])
-            db.session.add(user)
-        else:
-            user = models.Users.query.get(request.form['id'])
-            user.username = request.form['username']
-            user.email = request.form['email']
-            user.password = request.form['password']
-
-        db.session.commit()
-        return redirect(url_for('UserView:index'))
+        form = forms.UserForm(request.form)
+        if form.validate():
+            if form.id.data=='':
+                user = models.Users()
+                form.populate_obj(user)
+                user.id = None
+                db.session.add(user)
+            else:
+                user = models.Users.query.get(form.id.data)
+                form.populate_obj(user)
+            
+            db.session.commit()            
+            return redirect(url_for('UserView:index'))
+        return render_template('users/form.html', form=form)
 
     def view(self,user_id):
         user = models.Users.query.get(user_id)
-        return render_template('users/form.html', user=user)
+        form = forms.UserForm()
+        form.id.data = user.id
+        form.email.data = user.email
+        form.username.data = user.username
+        form.password.data = user.password
+        form.password_confirm.data = user.password
+        return render_template('users/form.html', form=form)
 
     def delete(self, user_id):
         user = models.Users.query.get(user_id)

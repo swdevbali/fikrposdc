@@ -15,12 +15,16 @@ class Users(db.Model,object):
     active = db.Column(db.Boolean)
 
 
-    def __init__(self, username, password, email):
+    def __init__(self, username=None, password=None, email=None):
         self.username = username
         self.email = email
         self.password = password
         self.active = True
         self.role = 'Admin'
+
+    @classmethod
+    def empty(cls):
+        return cls
 
     def _asdict(self):
         '''

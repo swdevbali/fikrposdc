@@ -1,40 +1,41 @@
 {% extends "layout.html" %}
 {% block body %}
 <form class="form-horizontal" action='{{ url_for('UserView:post') }}' method="POST">
-    <input type="hidden" id="id" name="id" value="{{ user.id }}"/>
+    {{ form.hidden_tag() }}
+    {{ form.id }}
   <fieldset>
     <div id="legend">
       <legend class="">Edit user</legend>
     </div>
     <div class="control-group">
       <!-- Username -->
-      <label class="control-label"  for="username">Username</label>
-      <div class="controls">
-        <input type="text" id="username" name="username" placeholder="Username can contain any letters or numbers, without spaces" class="input-xlarge" value="{{ user.username }}">
+      <label class="control-label"  for="username">{{ form.username.label }}</label>
+      <div class="controls">          
+        {{ form.username(placeholder="Username can contain any letters or numbers, without spaces",class="input-xlarge") }}
       </div>
     </div>
  
     <div class="control-group">
       <!-- E-mail -->
-      <label class="control-label" for="email">E-mail</label>
+      <label class="control-label" for="email">{{ form.email.label }}</label>
       <div class="controls">
-        <input type="text" id="email" name="email" placeholder="Please provide your E-mail" class="input-xlarge" value="{{ user.email }}">
+        {{ form.email(placeholder="Please provide your valid E-mail address",class="input-xlarge") }}
       </div>
     </div>
  
     <div class="control-group">
       <!-- Password-->
-      <label class="control-label" for="password">Password</label>
+      <label class="control-label" for="password">{{ form.password.label }}</label>
       <div class="controls">
-        <input type="password" id="password" name="password" placeholder="Password should be at least 4 characters" class="input-xlarge" value="{{ user.password }}">
+        {{ form.password(placeholder="Password should be at least 4 characters",class="input-xlarge") }}
       </div>
     </div>
  
     <div class="control-group">
       <!-- Password -->
-      <label class="control-label"  for="password_confirm">Password (Confirm)</label>
+      <label class="control-label"  for="password_confirm">{{ form.password_confirm.label }}</label>
       <div class="controls">
-        <input type="password" id="password_confirm" name="password_confirm" placeholder="Please confirm password" class="input-xlarge" value="{{ user.password }}">
+                  {{ form.password_confirm(placeholder="Please confirm password",class="input-xlarge") }}
       </div>
     </div>
  
