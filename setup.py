@@ -13,7 +13,7 @@ setup(name='Fikr POS DC',
         'Flask-SQLAlchemy==1.0',
         'simplejson==3.3.0',
         'flask-classy==0.6.3',
-        'flask-login',
-        'Flask-WTF'
+        'Flask-Login==0.2.7',
+        'Flask-WTF==1.0.5'
        ],
      )
