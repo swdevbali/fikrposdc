@@ -25,8 +25,8 @@
    Tiap branch akan punya user yang menjadi admin dari branch ini (attach ke user)   
    Saat pengiriman, token yang harus dikirimkan adalah username + password + branch_id, akan gagal jika user tidak menjadi admin dari branch tersebut [004]
    Banyak branch.. satu user aja. Satu user hanya boleh manage satu branch   
-** [008] Scenario login
 ** TODO [007] Scenario pemakai baru : register user dan register company
+** [008] Scenario login
 ** Sempurnakan CRUD paginated table
 *** DONE Menggunakan ajax u/ penghapusan data
 *** DONE Reload via AJAX

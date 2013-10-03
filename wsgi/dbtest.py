@@ -26,7 +26,7 @@ class DbTest(unittest.TestCase):
         
         #assert branch1.company_id == branch2.company_id;
 
-        
 
 if __name__ == '__main__':
+    
     unittest.main()

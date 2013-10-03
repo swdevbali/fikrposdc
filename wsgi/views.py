@@ -80,7 +80,7 @@ class BranchView(FlaskView):
         db.session.delete(branch)
         db.session.commit() #todo result
         result = {}
-        result['result']='success'
+        result['result']='succes/s'
         return json.dumps(result)
 
 class DataSet(FlaskView):
