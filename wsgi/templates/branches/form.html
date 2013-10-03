@@ -1,7 +1,8 @@
 {% extends "layout.html" %}
 {% block body %}
 <form class="form-horizontal" action='{{ url_for('BranchView:post') }}' method="POST">
-    <input type="hidden" id="id" name="id" value="{{ branch.id }}"/>
+    {{ form.hidden_tag() }}
+    {{ form.id }}
   <fieldset>
     <div id="legend">
       <legend class="">Edit branch</legend>
@@ -9,22 +10,22 @@
     <div class="control-group">
       <label class="control-label"  for="name">Name</label>
       <div class="controls">
-        <input type="text" id="name" name="name" placeholder="Give your branch meaningful name" class="input-xlarge" value="{{ branch.name }}">
+         {{ form.name(placeholder="Give your branch meaningful name",class="input-xlarge") }}
       </div>
     </div>
  
     <div class="control-group">
       <label class="control-label" for="email">Address</label>
       <div class="controls">
-          <textarea class="span4" id="address" name="address" placeholder="Official branch address" rows="5">{{ branch.address }}</textarea>
+          {{ form.address(placeholder="Official branch address",class="span4", rows="5") }}
       </div>
     </div>
 
     <div class="control-group">
       <label class="control-label"  for="token">Token</label>
       <div class="controls">
-          <input type="text" id="token" name="token" placeholder="Give unique token" class="input-xlarge" value="{{ branch.token }}">
-        <p class="help-block">Identify a POS installation</p>
+         {{ form.token(placeholder="Give unique token",class="input-xlarge") }}
+          <p class="help-block">Identify a POS installation</p>
       </div>
     </div>
  

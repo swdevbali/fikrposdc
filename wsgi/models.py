@@ -22,10 +22,6 @@ class Users(db.Model,object):
         self.active = True
         self.role = 'Admin'
 
-    @classmethod
-    def empty(cls):
-        return cls
-
     def _asdict(self):
         '''
         Thanks to http://stackoverflow.com/questions/7102754/jsonify-a-sqlalchemy-result-set-in-flask
@@ -61,7 +57,7 @@ class Branches(db.Model):
     token = db.Column(db.String) #for identification of client
     company_id = db.Column(db.Integer, db.ForeignKey('companies.id')) #User must register first
 
-    def __init__(self, name, address, token, user_id):
+    def __init__(self, name=None, address=None, token=None, user_id=None):
         self.name = name
         self.address = address
         self.token = token

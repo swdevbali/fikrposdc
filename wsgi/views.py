@@ -36,12 +36,7 @@ class UserView(FlaskView):
 
     def view(self,user_id):
         user = models.Users.query.get(user_id)
-        form = forms.UserForm()
-        form.id.data = user.id
-        form.email.data = user.email
-        form.username.data = user.username
-        form.password.data = user.password
-        form.password_confirm.data = user.password
+        form = forms.UserForm(obj=user)
         return render_template('users/form.html', form=form)
 
     def delete(self, user_id):
@@ -65,26 +60,31 @@ class BranchView(FlaskView):
         return render_template('branches/list.html')
 
     def new(self):
-        return render_template('branches/form.html', branch=None)
+        form = forms.BranchForm()
+        return render_template('branches/form.html', form=form)
 
     def post(self):
-        if request.form['id']=='':
+        form = forms.BranchForm(request.form)
+        if form.validate():
             company = models.Companies.query.get(1)
-            branch = models.Branches(request.form['name'], request.form['address'], request.form['token'],None)
-            company.branches.append(branch)
-        else:
-            branch = models.Branches.query.get(request.form['id'])
-            branch.name = request.form['name']
-            branch.address = request.form['address']
-            branch.token = request.form['token']
-
-        db.session.commit()
-        return redirect(url_for('BranchView:index'))
+            if form.id.data=='':
+                branch = models.Branches()
+                form.populate_obj(branch)
+                branch.id = None
+                company.branches.append(branch)
+            else:
+                branch = models.Branches.query.get(form.id.data)
+                form.populate_obj(branch)
+            
+            db.session.commit()   
+            return redirect(url_for('BranchView:index'))
+        return render_template('branches/form.html', form=form)
 
     def view(self,branch_id):
         branch = models.Branches.query.get(branch_id)
-        return render_template('branches/form.html', branch=branch)
-
+        form = forms.BranchForm(obj=branch)
+        return render_template('branches/form.html', form=form)
+    
     def apidelete(self, branch_id):
         branch = models.Branches.query.get(branch_id)
         db.session.delete(branch)
@@ -121,7 +121,7 @@ class DataSet(FlaskView):
         aaData = []   
         company = models.Companies.query.get(1)    
         for branch in company.branches:
-            aaData.append([branch.name, branch.address, string.join(['<a href="',url_for('BranchView:view',branch_id=branch.id),'"><i class="icon-pencil"></i></a> <a id="remove_branch_',`branch.id`,'" href="#"><i class="icon-remove"></i></a>'])])
+            aaData.append([branch.name, branch.address, branch.token, string.join(['<a href="',url_for('BranchView:view',branch_id=branch.id),'"><i class="icon-pencil"></i></a> <a id="remove_branch_',`branch.id`,'" href="#"><i class="icon-remove"></i></a>'])])
     
         data['aaData']=aaData
         return json.dumps(data)
