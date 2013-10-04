@@ -9,6 +9,10 @@ import models, json,  os, string, forms
 def index():
     return render_template('index.html')
 
+@app.route('/login')
+def login():
+    return render_template('login.html')
+
 class DashBoard(FlaskView):
     route_base = '/dashboard'
     
