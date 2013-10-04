@@ -1,4 +1,4 @@
-{% extends "layout.html" %}
+{% extends "layout-dashboard.html" %}
 
 {% block body %}
 <div id="result">
@@ -7,7 +7,7 @@
     <!-- block -->
     <div class="block">
         <div class="navbar navbar-inner block-header">
-            <a href="/manage/users/new" class="btn btn-primary"><i class="icon-white icon-user"></i> New user</a>
+            <a href="{{ url_for('UserView:new')}}" class="btn btn-primary"><i class="icon-white icon-user"></i> New user</a>
         </div>
         <div class="block-content collapse in">
             <div class="span12">
@@ -52,7 +52,7 @@
                     bootbox.confirm("Are you sure?", function(result) {                        
                         if(result)
                         {
-                            var processingUrl = "/manage/users/apidelete/" + id;
+                            var processingUrl = "/dashboard/manage/users/apidelete/" + id;
                             $.getJSON(  
                                 processingUrl,  
                                 {},  

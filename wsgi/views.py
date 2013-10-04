@@ -4,9 +4,17 @@ from flask.ext.classy import FlaskView
 from flask.ext.login import login_required
 import models, json,  os, string, forms
 
+
 @app.route('/')
 def index():
     return render_template('index.html')
+
+class DashBoard(FlaskView):
+    route_base = '/dashboard'
+    
+    @login_required
+    def index(self):
+        return render_template('dashboard.html')
 
 @login_manager.user_loader
 def load_user(userid):
@@ -14,7 +22,7 @@ def load_user(userid):
 
 
 class UserView(FlaskView):
-    route_base = '/manage/users'
+    route_base = '/dashboard/manage/users'
     
     @login_required
     def index(self):
@@ -65,7 +73,7 @@ class UserView(FlaskView):
         return json.dumps(result)
 
 class BranchView(FlaskView):
-    route_base = '/manage/branches'
+    route_base = '/dashboard/manage/branches'
 
     @login_required
     def index(self):
@@ -157,7 +165,7 @@ class CompanyView:
             return redirect(url_for('manage_company'))
         return render_template('companies/form.html', company=models.Companies.query.get(1)) #todo for active company
 
-
+DashBoard.register(app)
 UserView.register(app)
 BranchView.register(app)
 DataSet.register(app)

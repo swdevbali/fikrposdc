@@ -70,10 +70,10 @@
                 <div class="span3" id="sidebar">
                     <ul class="nav nav-list bs-docs-sidenav nav-collapse collapse">
                         <li>
-                            <a href="/manage/users"><i class="icon-chevron-right"></i>Users</a>
+                            <a href="{{ url_for('UserView:index') }}"><i class="icon-chevron-right"></i>Users</a>
                         </li>
                         <li>
-                            <a href="/manage/branches"><i class="icon-chevron-right"></i> Branches</a>
+                            <a href="{{ url_for('BranchView:index') }}"><i class="icon-chevron-right"></i> Branches</a>
                         </li>
                     </ul>
                 </div>
