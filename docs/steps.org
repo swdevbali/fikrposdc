@@ -27,6 +27,7 @@ Komponen
    Banyak branch.. satu user aja. Satu user hanya boleh manage satu branch   
 ** [008] Scenario login
 ** TODO [007] Scenario pemakai baru : register user dan register company
+** TODO [008] Create a homepage first, then the current / (index) will be use as /home
 ** Sempurnakan CRUD paginated table
 *** DONE Menggunakan ajax u/ penghapusan data
 *** DONE Reload via AJAX
