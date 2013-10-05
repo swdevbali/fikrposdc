@@ -13,6 +13,10 @@ def index():
 def login():
     return render_template('login.html')
 
+@app.route('/signup')
+def signup():
+    return render_template('signup.html')
+
 class DashBoard(FlaskView):
     route_base = '/dashboard'
     

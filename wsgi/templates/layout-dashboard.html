@@ -3,9 +3,10 @@
     
     <head>
         <title>FikrPOS Integrated System</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <!-- Bootstrap -->
-        <link href="/static/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
-        <link href="/static/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" media="screen">
+        <link href="/static/bootstrap/css/bootstrap.css" rel="stylesheet" media="screen">
+<!--        <link href="/static/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" media="screen">-->
         <link href="/static/assets/styles.css" rel="stylesheet" media="screen">
         <link href="/static/assets/DT_bootstrap.css" rel="stylesheet" media="screen">
         <link href="/static/bootstrap-notify/bootstrap-notify.css">
@@ -33,7 +34,7 @@
                     <div class="nav-collapse collapse">
 {% if not session['logged'] %}
                         <ul class="nav">
-                            <li class="active">
+                            <li>
                                 <a href="#">Home</a>
                             </li>
                             <li>
@@ -103,10 +104,12 @@
                     <!--/.nav-collapse -->
                 </div>
             </div>
-        </div>
+        </div><!--/nav bar-->
+
+
+{% if session['logged'] %}
         <div class="container-fluid">
             <div class="row-fluid">
-                {% if session['logged'] %}
                 <div class="span3" id="sidebar">
                     <ul class="nav nav-list bs-docs-sidenav nav-collapse collapse">
                         <li>
@@ -117,32 +120,37 @@
                         </li>
                     </ul>
                 </div>
-                {% endif %}
                 <!--/span-->
                 <div class="span9" id="content">
                     <div class="notifications top-right" style="right: 10px;top: 25px; float: right;"></div>
-                    {% if form %}
-                    {% for error in form.errors %}
+    {% if form %}
+        {% for error in form.errors %}
                     <div class="alert alert-error">  
                         <a class="close" data-dismiss="alert">×</a>
                         <strong>{{ form[error].label }} {{form.errors[error][0] }}</strong>
                     </div>
-{% endfor %}
-{% endif %}
-                    {% block body %}
-                    {% endblock %}
+        {% endfor %}
+    {% endif %}                    
+
+    {% block body %}
+    {% endblock %}
                 </div><!-- /span9 -->
-            </div>
+            </div>        
+        </div>
+{% else %}
+    {% block body_nonlogged %}
+    {% endblock %}
+{% endif %}
             <hr>
             <footer>
       <p align="center"> FikrMalaysia. All rights reserved<br/>
 <a href="https://www.openshift.com/" target="_blank"><img alt="Powered by OpenShift" src="/static/assets/powered-transparent-black.png"></a>
 </p>
             </footer>
-        </div>
+
         <!--/.fluid-container-->
         <script src="/static/vendors/jquery-1.9.1.js"></script>
-        <script src="/static/bootstrap/js/bootstrap.min.js"></script>
+        <script src="/static/bootstrap/js/bootstrap.js"></script>
         <script src="/static/assets/scripts.js"></script>
         <script src="/static/bootstrap-notify/bootstrap-notify.js"></script>
         <script src="/static/vendors/modernizr-2.6.2-respond-1.1.0.min.js"></script>
