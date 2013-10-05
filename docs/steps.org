@@ -21,14 +21,20 @@ Komponen
    Tiap branch akan punya user yang menjadi admin dari branch ini (attach ke user)   
    Saat pengiriman, token yang harus dikirimkan adalah username + password + branch_id, akan gagal jika user tidak menjadi admin dari branch tersebut [004]
    Banyak branch.. satu user aja. Satu user hanya boleh manage satu branch   
-** [004] Verifikasi ID dari Client ke Server
+** DONE [007] Scenario pemakai baru : register user dan register company
+*** DONE [008] Create a homepage first, then the current / (index) will be use as /home
+*** DONE [009] Understanding Layout better
+*** DONE [010] Signup    
+*** [012] Signout
+** [004] API Verifikasi ID dari Client ke Server
    Klien mengirimkan username dan password via json ke server herokuapp
    Server menerima dan mencocokkannya dengan database, mengirimkan json true/false jika benar.
    URL /api/log/in/{username}/{encyrpted password}
-** [008] Scenario login
-** TODO [007] Scenario pemakai baru : register user dan register company
-*** DONE [008] Create a homepage first, then the current / (index) will be use as /home
-*** TODO [009] Understanding Layout better
+** [008] Scenario signin
+*** [013] Signin freely, check password
+*** TODO [011] Signin after signup
+*** [014] Refine signup checking email existing
+** Dashboard Development
 ** Sempurnakan CRUD paginated table
 *** DONE Menggunakan ajax u/ penghapusan data
 *** DONE Reload via AJAX

@@ -2,11 +2,20 @@
 
 {% block header %}
 <style>
+
+{% if session['logged'] %}
+  body {
+        padding-bottom: 40px;
+        color: #5a5a5a;
+    }
+{% else %}
   body {
         padding-top: 0px;
         padding-bottom: 40px;
         color: #5a5a5a;
     }
+{% endif %}
+
 
  /* CUSTOMIZE THE CAROUSEL
     -------------------------------------------------- */
@@ -204,8 +213,8 @@ l    /* Center align the text within the three columns below the carousel */
           <div class="container">
             <div class="carousel-caption">
               <h1>Expand and enhance your POS business</h1>
-              <p class="lead">Using the latest technology in POS application, your business is secure with us</p>
-              <a class="btn btn-large btn-primary" href="/signup">Sign Up</a>
+              <p class="lead">Using the latest technology in POS application, your business is secure withus</p>
+              <a class="btn btn-large btn-primary" href="{{ url_for('RegistrationView:signup')}}">Sign Up</a>
             </div>
           </div>
         </div>
@@ -290,6 +299,10 @@ l    /* Center align the text within the three columns below the carousel */
       </div>
 {% endblock %}
 
+
+{% block body %}
+TODO : Display chart here
+{% endblock %}
 
 {% block hook_endscript %}
 <script src="/static/assets/holder.js"></script>

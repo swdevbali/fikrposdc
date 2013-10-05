@@ -49,9 +49,6 @@
                         </ul>
 
                         <ul class="nav pull-right">
-                            <li>
-                                <a href="/signup">Sign Up</a>
-                            </li>
                             <li class="divider-vertical"></li>
 
                             <li class="dropdown">
@@ -111,6 +108,15 @@
         </div><!--/nav bar-->
 
 
+    {% if form %}
+        {% for error in form.errors %}
+                    <div class="alert alert-error">  
+                        <a class="close" data-dismiss="alert">×</a>
+                        <strong>{{ form[error].label }} {{form.errors[error][0] }}</strong>
+                    </div>
+        {% endfor %}
+    {% endif %}  
+
 {% if session['logged'] %}
         <div class="container-fluid">
             <div class="row-fluid">
@@ -127,14 +133,7 @@
                 <!--/span-->
                 <div class="span9" id="content">
                     <div class="notifications top-right" style="right: 10px;top: 25px; float: right;"></div>
-    {% if form %}
-        {% for error in form.errors %}
-                    <div class="alert alert-error">  
-                        <a class="close" data-dismiss="alert">×</a>
-                        <strong>{{ form[error].label }} {{form.errors[error][0] }}</strong>
-                    </div>
-        {% endfor %}
-    {% endif %}                    
+                 
 
     {% block body %}
     {% endblock %}

@@ -5,53 +5,60 @@
         <div class="span3">
         </div>
         <div class="span9">    
-                            <form class="form-horizontal">
+                            <form class="form-horizontal" action={{url_for('RegistrationView:post')}} method="POST" >
+    {{ form.hidden_tag() }}
                                 <div class="heading">
                                     <h4 class="form-heading">Sign Up</h4>
                                 </div>
                                 <div class="control-group">
-                                    <label class="control-label" for="inputCompanyName">Company Name</label>
+                                    <label class="control-label" for="company_name">{{ form.company_name.label }}</label>
                                     <div class="controls">
-                                        <input type="text" id="inputCompanyName" placeholder="E.g. Some Software Pvt. Ltd.">
+                                        {{ form.company_name(placeholder="E.g. Some Software Pvt. Ltd.") }}
                                     </div>
                                 </div>
                                 <div class="control-group">
-                                    <label class="control-label" for="inputFirst">First Name</label>
+                                    <label class="control-label" for="firstname">{{ form.firstname.label}}</label>
                                     <div class="controls">
-                                        <input type="text" id="inputFirst" placeholder="E.g. Ashwin">
+                                        {{ form.firstname(placeholder="E.g. Ashwin") }}
                                     </div>
                                 </div>
                                 <div class="control-group">
-                                    <label class="control-label" for="inputLast">Last Name</label>
+                                    <label class="control-label" for="lastname">{{form.lastname.label}}</label>
                                     <div class="controls">
-                                        <input type="text" id="inputLast" placeholder="E.g. Hegde">
+                                        {{form.lastname(placeholder="E.g. Hegde")}}
                                     </div>
                                 </div>
                                 <div class="control-group">
-                                    <label class="control-label" for="inputEmail">Email</label>
+                                    <label class="control-label" for="email">{{form.email.label}}</label>
                                     <div class="controls">
-                                        <input type="text" id="inputEmail" placeholder="E.g. ashwinh@cybage.com">
+                                        {{form.email(placeholder="E.g. ashwinh@cybage.com")}}
                                     </div>
                                 </div>
                                 <div class="control-group">
-                                    <label class="control-label" for="inputUser">Username</label>
+                                    <label class="control-label" for="username">{{form.username.label}}</label>
                                     <div class="controls">
-                                        <input type="text" id="inputUser" placeholder="E.g. ashwinhegde">
+                                        {{form.username(placeholder="E.g. ashwinhegde")}}
                                     </div>
                                 </div>
                                 <div class="control-group">
-                                    <label class="control-label" for="inputPassword">Password</label>
+                                    <label class="control-label" for="password">{{form.password.label}}</label>
                                     <div class="controls">
-                                        <input type="password" id="inputPassword" placeholder="Min. 8 Characters">
+                                        {{form.password(placeholder="Min. 6 Characters")}}
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label" for="password">{{form.password_confirm.label}}</label>
+                                    <div class="controls">
+                                        {{form.password_confirm(placeholder="Min. 6 Characters")}}
                                     </div>
                                 </div>
                                 <div class="control-group">
                                     <div class="controls">
+
                                         <label class="checkbox">
-                                            <input type="checkbox"> I agree all your <a href="#">Terms of Services</a>
+                                        {{form.agree}} {{form.agree.label}}
                                         </label>
                                         <button type="submit" class="btn btn-success">Sign Up</button>
-                                        <button type="button" class="btn">Help</button>
                                     </div>
                                 </div>
                             </form>

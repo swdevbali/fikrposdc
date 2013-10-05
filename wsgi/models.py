@@ -9,18 +9,36 @@ class Users(db.Model,object):
     '''
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(60), unique=True)
+    firstname = db.Column(db.String(20))
+    lastname = db.Column(db.String(20))
     password = db.Column(db.String)
     email = db.Column(db.String(100), unique=True)
     role = db.Column(db.String(20))
     active = db.Column(db.Boolean)
 
 
-    def __init__(self, username=None, password=None, email=None):
+    def __init__(self, username=None, password=None, email=None, firstname=None, lastname=None):
         self.username = username
         self.email = email
+        self.firstname = firstname
+        self.lastname = lastname
         self.password = password
         self.active = True
         self.role = 'Admin'
+
+    def is_authenticated(self):
+        return True
+
+    def is_active(self):
+        return active
+    
+    def is_anonymous(self):
+        return False
+
+    def get_id(self):
+        return unicode(id)
+
+
 
     def _asdict(self):
         '''
@@ -43,7 +61,7 @@ class Companies(db.Model):
     branches = db.relationship("Branches")
 
 
-    def __init__(self, name, address, user_id, token):
+    def __init__(self, name=None, address=None, user_id=None, token=None):
         self.name = name
         self.address = address
         self.user_id = user_id

@@ -1,5 +1,5 @@
 from main import app, db, login_manager
-from flask import render_template, request, flash, url_for, redirect, abort, jsonify
+from flask import render_template, request, flash, url_for, redirect, abort, jsonify, session
 from flask.ext.classy import FlaskView
 from flask.ext.login import login_required
 import models, json,  os, string, forms
@@ -13,9 +13,35 @@ def index():
 def login():
     return render_template('login.html')
 
-@app.route('/signup')
-def signup():
-    return render_template('signup.html')
+@login_manager.user_loader
+def load_user(userid):
+    return models.Users.query.get(int(userid))
+
+class RegistrationView(FlaskView):
+    route_base='/registration'
+    def signup(self):
+        form = forms.RegistrationForm()
+        return render_template('signup.html', form = form)
+
+    def post(self):
+        form = forms.RegistrationForm(request.form)
+        if form.validate():
+            user = models.Users()
+            form.populate_obj(user)
+            db.session.add(user)
+            db.session.commit()
+
+            company = models.Companies()
+            company.name = form.company_name.data
+            company.user_id = user.id
+            db.session.add(company)
+            db.session.commit()
+            
+            session['logged']=True
+            return render_template('signup_success.html')
+
+        return render_template('signup.html', form = form)
+            
 
 class DashBoard(FlaskView):
     route_base = '/dashboard'
@@ -23,11 +49,6 @@ class DashBoard(FlaskView):
     @login_required
     def index(self):
         return render_template('dashboard.html')
-
-@login_manager.user_loader
-def load_user(userid):
-    return models.Users.query.get(int(userid))
-
 
 class UserView(FlaskView):
     route_base = '/dashboard/manage/users'
@@ -177,3 +198,4 @@ DashBoard.register(app)
 UserView.register(app)
 BranchView.register(app)
 DataSet.register(app)
+RegistrationView.register(app)
