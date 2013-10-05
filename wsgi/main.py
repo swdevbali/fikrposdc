@@ -16,6 +16,8 @@ if __name__ == '__main__':
     from main import app as application
     from main import *
     print ' - Create DB and run application..'
-    
+
+    if app.config['INIT_DB']:
+        db.drop_all()
     db.create_all()
     app.run(debug=True)

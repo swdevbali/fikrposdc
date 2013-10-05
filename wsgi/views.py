@@ -13,6 +13,10 @@ def index():
 def login():
     return render_template('login.html')
 
+@app.route('/logout')
+def logout():
+    pass
+
 @login_manager.user_loader
 def load_user(userid):
     return models.Users.query.get(int(userid))

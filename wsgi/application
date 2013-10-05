@@ -12,7 +12,7 @@ except IOError:
 from main import app as application
 from main import *
 
-if app.config['DEVELOPMENT_MODE']:
+if app.config['INIT_DB']:
     db.drop_all()
 
 db.create_all()
