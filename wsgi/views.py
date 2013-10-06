@@ -34,16 +34,18 @@ class SignView(FlaskView):
             if user.password != helper.hash_pass(form.password.data):
                 return redirect(url_for('SignView:dedicated'))                
 
-            login_user(user, remember = form.remember_me.data)
-
+            login_user(user, remember = form.remember_me.data)            
+            
             session['logged'] = True
             session['username']= user.username
+            session['company_id'] = user.company_id
             return redirect(url_for('index'))        
         return redirect(url_for('SignView:dedicated'))    
 
     def signout(self):
         session.pop('logged')
         session.pop('username')
+        session.pop('company_id')
         logout_user()
         return redirect(url_for('index'))
 
@@ -81,12 +83,9 @@ class RegistrationView(FlaskView):
             
 
             user.password = helper.hash_pass(user.password)
-            db.session.add(user)
-            db.session.commit()
-
             company = models.Companies()
             company.name = form.company_name.data
-            company.user_id = user.id
+            company.users.append(user)
             db.session.add(company)
             db.session.commit()
 
@@ -127,7 +126,8 @@ class UserView(FlaskView):
                 user = models.Users()
                 form.populate_obj(user)
                 user.id = None
-                db.session.add(user)
+                company = models.Companies.query.get(session['company_id'])
+                company.users.append(user)
             else:
                 user = models.Users.query.get(form.id.data)
                 form.populate_obj(user)
@@ -174,7 +174,7 @@ class BranchView(FlaskView):
     def post(self):
         form = forms.BranchForm(request.form)
         if form.validate():
-            company = models.Companies.query.get(1)
+            company = models.Companies.query.get(session['company_id'])
             if form.id.data=='':
                 branch = models.Branches()
                 form.populate_obj(branch)
@@ -216,7 +216,7 @@ class DataSet(FlaskView):
         aaData = []   
         users=models.Users.query.with_entities(
             models.Users.id, models.Users.username,
-            models.Users.email).order_by(models.Users.username).all()
+            models.Users.email).filter_by(company_id=session['company_id']).order_by(models.Users.username).all()
         for user in users:
             aaData.append([user.username, user.email, string.join(['<a href="',url_for('UserView:view', user_id=user.id),'"><i class="icon-pencil"></i></a> <a id="remove_user_',`user.id`,'" href="#"><i class="icon-remove"></i></a>'],'')])
     
@@ -231,16 +231,19 @@ class DataSet(FlaskView):
         data['iTotalDisplayRecords'] =  2    
         
         aaData = []   
-        company = models.Companies.query.get(1)    
+        company = models.Companies.query.get(session['company_id'])    
         for branch in company.branches:
             aaData.append([branch.name, branch.address, branch.token, string.join(['<a href="',url_for('BranchView:view',branch_id=branch.id),'"><i class="icon-pencil"></i></a> <a id="remove_branch_',`branch.id`,'" href="#"><i class="icon-remove"></i></a>'])])
     
         data['aaData']=aaData
         return json.dumps(data)
 
-class CompanyView:
-    @app.route('/manage/company', methods=['GET', 'POST'])
-    def manage_company():
+class CompanyView(FlaskView):
+    route_base = '/dashboard/manage/company'
+
+    @login_required
+    @route('/profile', methods=['GET', 'POST'])
+    def profile(self):
         if request.method=='POST':
             company = models.Companies.query.get(request.form['id'])
             company.name = request.form['name']
@@ -248,8 +251,9 @@ class CompanyView:
             company.token = request.form['token']
             db.session.commit()
             flash('success')
-            return redirect(url_for('manage_company'))
-        return render_template('companies/form.html', company=models.Companies.query.get(1)) #todo for active company
+            return redirect(url_for('CompanyView:profile'))
+        return render_template('companies/form.html', 
+                               company=models.Companies.query.get(session['company_id']))
 
 DashBoard.register(app)
 UserView.register(app)
@@ -257,3 +261,4 @@ BranchView.register(app)
 DataSet.register(app)
 RegistrationView.register(app)
 SignView.register(app)
+CompanyView.register(app)

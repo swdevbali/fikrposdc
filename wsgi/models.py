@@ -15,6 +15,7 @@ class Users(db.Model,object):
     email = db.Column(db.String(100), unique=True)
     role = db.Column(db.String(20))
     active = db.Column(db.Boolean)
+    company_id = db.Column(db.Integer, db.ForeignKey('companies.id'))
 
     def __init__(self, username=None, password=None, email=None, firstname=None, lastname=None):
         self.username = username
@@ -53,15 +54,14 @@ class Companies(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100), unique=True)
     address = db.Column(db.String)
-    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+    users = db.relation('Users', backref=db.backref('users'))
     token = db.Column(db.String) #for identification of client
     branches = db.relationship("Branches")
 
 
-    def __init__(self, name=None, address=None, user_id=None, token=None):
+    def __init__(self, name=None, address=None, token=None):
         self.name = name
         self.address = address
-        self.user_id = user_id
         self.token = token
 
 class Branches(db.Model):

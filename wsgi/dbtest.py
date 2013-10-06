@@ -17,10 +17,11 @@ class DbTest(unittest.TestCase):
         db.session.commit()
         
         """the company"""
-        company1 = models.Companies('CDI','Glagah Kidul', user1.id, 'empty')
+        company1 = models.Companies('CDI','Glagah Kidul', 'empty')
         db.session.add(company1)
+        company1.users.append(user1)
         db.session.commit()        
-        assert company1.user_id == user1.id
+        assert company1.users[0].id == user1.id
 
         """branches"""
         company1.branches.append(models.Branches(name='Kopjar',address='Penjara Malaysia', token='empty token', user_id=user1.id))
