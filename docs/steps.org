@@ -31,8 +31,9 @@ Komponen
    Server menerima dan mencocokkannya dengan database, mengirimkan json true/false jika benar.
    URL /api/log/in/{username}/{encyrpted password}
 ** [008] Scenario signin
+*** TODO [015] Buat signin spt navbar twitter. Jika benar, langsung ke dashboard. Jika salah, arahkan ke page khusus signup dengan alert errornya. Selain itu, twitter juga bs tuh signup langsung dari homepage. Jadi, u/ signup memang ga mesti dari satu form aja.. Ide segara ini. Besok ngerjain ini pagi2! ;) Insyaaa Allah!
 *** [013] Signin freely, check password
-*** TODO [011] Signin after signup
+*** [011] Signin after signup
 *** [014] Refine signup checking email existing
 ** Dashboard Development
 ** Sempurnakan CRUD paginated table

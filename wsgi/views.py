@@ -7,19 +7,20 @@ import models, json,  os, string, forms
 
 @app.route('/')
 def index():
-    return render_template('index.html')
-
-@app.route('/login')
-def login():
-    return render_template('login.html')
-
-@app.route('/logout')
-def logout():
-    pass
+    return render_template('index.html', login_form = forms.LoginForm())
 
 @login_manager.user_loader
 def load_user(userid):
     return models.Users.query.get(int(userid))
+
+class SignView(FlaskView):
+    route_base = '/auth'
+    def signin(self):
+        pass
+
+    def signout(self):
+        session.pop('logged')
+        return redirect('/')
 
 class RegistrationView(FlaskView):
     route_base='/registration'
@@ -203,3 +204,4 @@ UserView.register(app)
 BranchView.register(app)
 DataSet.register(app)
 RegistrationView.register(app)
+SignView.register(app)
