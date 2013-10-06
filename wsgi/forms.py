@@ -5,7 +5,7 @@ from wtforms.validators import Required, EqualTo, Optional
 class LoginForm(Form):
     username = TextField('Username', validators=[
             Required(),
-            validators.Length(min=6, message=(u'Please give a longer password'))
+            validators.Length(min=3, message=(u'Your username must be a minimum of 3'))
             ])
     password = PasswordField('Password', validators=[
             Required(),

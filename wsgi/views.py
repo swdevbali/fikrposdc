@@ -1,7 +1,7 @@
 from main import app, db, login_manager
-from flask import render_template, request, flash, url_for, redirect, abort, jsonify, session
-from flask.ext.classy import FlaskView
-from flask.ext.login import login_required
+from flask import render_template, request, flash, url_for, redirect, abort, jsonify, session, g
+from flask.ext.classy import FlaskView, route
+from flask.ext.login import login_user, logout_user, current_user, login_required, UserMixin
 import models, json,  os, string, forms
 
 
@@ -9,18 +9,40 @@ import models, json,  os, string, forms
 def index():
     return render_template('index.html', login_form = forms.LoginForm())
 
+@app.before_request
+def before_request():
+    g.user = current_user
+
 @login_manager.user_loader
 def load_user(userid):
-    return models.Users.query.get(int(userid))
+    return models.Users.query.get(userid)
 
 class SignView(FlaskView):
     route_base = '/auth'
+
+    @route('/signin', methods=['POST'])
     def signin(self):
-        pass
+        if g.user is not None and g.user.is_authenticated():
+            return redirect(url_for('index'))
+
+        form = forms.LoginForm(request.form)
+        if form.validate():
+            user = models.Users.query.filter_by(username = form.username.data).first()
+            print user.username
+            if user is None:
+                return redirect(url_for('SignView:dedicated'))            
+            login_user(user, remember = form.remember_me.data)
+            session['logged'] = True
+            return redirect(url_for('index'))
+        return redirect(url_for('SignView:dedicated'))    
 
     def signout(self):
         session.pop('logged')
-        return redirect('/')
+        logout_user()
+        return redirect(url_for('index'))
+
+    def dedicated(self):
+        return render_template('/login.html', login_form = forms.LoginForm())
 
 class RegistrationView(FlaskView):
     route_base='/registration'

@@ -55,7 +55,8 @@
                             <li class="dropdown">
                                 <a class="dropdown-toggle" href="#" data-toggle="dropdown">Sign In <strong class="caret"></strong></a>
                                 <div class="dropdown-menu" style="padding: 15px; padding-bottom: 0px;">
-                                    <form action="{{ url_for('SignView:signin')}}" accept-charset="UTF-8">
+                                    <form action="{{ url_for('SignView:signin')}}" method="POST" accept-charset="UTF-8">
+                                        {{ login_form.hidden_tag() }}
                                         {{ login_form.username(placeholder="Username", style="margin-bottom: 15px;")}}         
                                         {{ login_form.password(placeholder="Password", style="margin-bottom: 15px;")}}
                                         {{ login_form.remember_me(style="float: left; margin-right: 10px;") }}

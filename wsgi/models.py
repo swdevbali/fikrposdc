@@ -16,7 +16,6 @@ class Users(db.Model,object):
     role = db.Column(db.String(20))
     active = db.Column(db.Boolean)
 
-
     def __init__(self, username=None, password=None, email=None, firstname=None, lastname=None):
         self.username = username
         self.email = email
@@ -30,15 +29,13 @@ class Users(db.Model,object):
         return True
 
     def is_active(self):
-        return active
+        return self.active
     
     def is_anonymous(self):
         return False
 
     def get_id(self):
-        return unicode(id)
-
-
+        return unicode(self.id)
 
     def _asdict(self):
         '''
