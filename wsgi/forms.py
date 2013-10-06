@@ -49,7 +49,7 @@ class BranchForm(Form):
 class RegistrationForm(Form):
     username = TextField('Username', validators=[
             Required(),
-            validators.Length(min=6, message=(u'Please give a longer password'))
+            validators.Length(min=3, message=(u'Please give a longer username'))
             ])
     firstname = TextField('First Name', validators=[Required()])
     lastname = TextField('Last Name', validators=[Required()])

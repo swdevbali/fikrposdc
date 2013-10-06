@@ -53,7 +53,7 @@ class Companies(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100), unique=True)
     address = db.Column(db.String)
-    user_id = db.Column(db.Integer, db.ForeignKey('users.id')) #User must register first
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     token = db.Column(db.String) #for identification of client
     branches = db.relationship("Branches")
 

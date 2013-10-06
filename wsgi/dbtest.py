@@ -1,6 +1,8 @@
 import unittest
 from main import db
 import models
+import md5
+import helper
 
 class DbTest(unittest.TestCase):
     def setUp(self):
@@ -9,7 +11,8 @@ class DbTest(unittest.TestCase):
         
     def test_user_and_company(self):
         """admin of a company"""
-        user1 = models.Users('eko', 'rahasia', 'swdev.bali@gmail.com')
+        
+        user1 = models.Users('eko', helper.hash_pass('rahasia'), 'swdev.bali@gmail.com')
         db.session.add(user1)
         db.session.commit()
         

@@ -2,7 +2,7 @@ from main import app, db, login_manager
 from flask import render_template, request, flash, url_for, redirect, abort, jsonify, session, g
 from flask.ext.classy import FlaskView, route
 from flask.ext.login import login_user, logout_user, current_user, login_required, UserMixin
-import models, json,  os, string, forms
+import models, json,  os, string, forms, helper
 
 
 @app.route('/')
@@ -28,16 +28,22 @@ class SignView(FlaskView):
         form = forms.LoginForm(request.form)
         if form.validate():
             user = models.Users.query.filter_by(username = form.username.data).first()
-            print user.username
+
             if user is None:
                 return redirect(url_for('SignView:dedicated'))            
+            if user.password != helper.hash_pass(form.password.data):
+                return redirect(url_for('SignView:dedicated'))                
+
             login_user(user, remember = form.remember_me.data)
+
             session['logged'] = True
-            return redirect(url_for('index'))
+            session['username']= user.username
+            return redirect(url_for('index'))        
         return redirect(url_for('SignView:dedicated'))    
 
     def signout(self):
         session.pop('logged')
+        session.pop('username')
         logout_user()
         return redirect(url_for('index'))
 
@@ -47,14 +53,34 @@ class SignView(FlaskView):
 class RegistrationView(FlaskView):
     route_base='/registration'
     def signup(self):
-        form = forms.RegistrationForm()
-        return render_template('signup.html', form = form)
+        return render_template('signup.html', 
+                               form = forms.RegistrationForm(),
+                               login_form = forms.LoginForm())
 
     def post(self):
         form = forms.RegistrationForm(request.form)
         if form.validate():
             user = models.Users()
             form.populate_obj(user)
+            
+            user_exist = models.Users.query.filter_by(username=form.username.data).first()
+            email_exist = models.Users.query.filter_by(email=form.email.data).first()
+
+            if user_exist:
+                form.errors['username']=[]
+                form.errors['username'].append('Username already taken')
+
+            if email_exist:
+                form.errors['email']=[]
+                form.errors['email'].append('Email already use')
+
+            if user_exist or email_exist:
+                return render_template('signup.html', 
+                                       form = form,
+                                       login_form = forms.LoginForm())
+            
+
+            user.password = helper.hash_pass(user.password)
             db.session.add(user)
             db.session.commit()
 
@@ -63,13 +89,17 @@ class RegistrationView(FlaskView):
             company.user_id = user.id
             db.session.add(company)
             db.session.commit()
-            
-            session['logged']=True
-            return render_template('signup_success.html')
 
-        return render_template('signup.html', form = form)
+            return redirect(url_for('RegistrationView:success'))
             
+        return render_template('signup.html', 
+                               form = form,
+                               login_form = forms.LoginForm())
 
+           
+    def success(self):
+        return render_template('signup_success.html',
+                                   login_form = forms.LoginForm())
 class DashBoard(FlaskView):
     route_base = '/dashboard'
     
