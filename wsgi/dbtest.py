@@ -4,6 +4,7 @@ import models
 import md5
 import helper
 
+
 class DbTest(unittest.TestCase):
     def setUp(self):
         db.drop_all()
@@ -28,9 +29,15 @@ class DbTest(unittest.TestCase):
         company1.branches.append(models.Branches(name='Selangor',address='Koperasi Selangor', token='empty token',  user_id=user1.id))        
         db.session.commit()
         
-        #assert branch1.company_id == branch2.company_id;
+        '''sales'''
+        branch1 = company1.branches[0] # branch1 = company1.branches.filter().all() # via query
+        assert branch1.company_id == company1.id
 
+        branch1.sales.append(models.Sales(day='2013-02-02'))
+        db.session.commit()
+        sales = branch1.sales[0] # harus via query
+        sales.data.append(models.SaleData(cash_start_of_day = 0, cash_end_of_day = 500000, income = 500000))
+        db.session.commit()
 
-if __name__ == '__main__':
-    
+if __name__ == '__main__':    
     unittest.main()

@@ -18,6 +18,7 @@ if __name__ == '__main__':
     print ' - Create DB and run application..'
 
     if app.config['INIT_DB']:
+        print 'Dropping tables'
         db.drop_all()
     db.create_all()
     app.run(debug=True)

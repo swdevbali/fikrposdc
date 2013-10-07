@@ -71,9 +71,39 @@ class Branches(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     token = db.Column(db.String) #for identification of client
     company_id = db.Column(db.Integer, db.ForeignKey('companies.id')) #User must register first
+    #sales = db.relationship("Sales")
+    sales = db.relation('Sales', 
+                        backref=db.backref('sales', lazy='dynamic'),
+                        cascade="all, delete-orphan",
+                        lazy='dynamic',
+                        passive_deletes=True)
 
     def __init__(self, name=None, address=None, token=None, user_id=None):
         self.name = name
         self.address = address
         self.token = token
         self.user_id = user_id
+
+class Sales(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    day = db.Column(db.Date)
+    branch_id = db.Column(db.Integer, db.ForeignKey('branches.id'))
+    data = db.relationship("SaleData")
+
+    def __init__(self, day=None):
+        self.day = day
+        
+        
+
+class SaleData(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    sale_id = db.Column(db.Integer, db.ForeignKey('sales.id'))
+    cash_start_of_day = db.Column(db.Integer)
+    cash_end_of_day = db.Column(db.Integer)
+    income = db.Column(db.Integer) # which is end - start
+    
+    def __init__(self, cash_start_of_day = None, cash_end_of_day = None, income = None):
+        self.cash_start_of_day = cash_start_of_day
+        self.cash_end_of_day = cash_end_of_day
+        self.income = income
+        
