@@ -44,4 +44,6 @@ Komponen
 ** Pengiriman report data transaksi harian
 ** Select navigation of module
 
+* Bug Fixing
+** That jquery.pott.. things
 

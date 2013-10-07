@@ -7,6 +7,8 @@ import models, json,  os, string, forms, helper
 
 @app.route('/')
 def index():
+    if g.user is not None and g.user.is_authenticated():
+        return redirect(url_for('DashboardView:index'))
     return render_template('index.html', login_form = forms.LoginForm())
 
 @app.before_request
@@ -30,7 +32,7 @@ class SignView(FlaskView):
     @route('/signin', methods=['POST'])
     def signin(self):
         if g.user is not None and g.user.is_authenticated():
-            return redirect(url_for('index'))
+            return redirect(url_for('DashboardView:index'))
 
         form = forms.LoginForm(request.form)
         if form.validate():
