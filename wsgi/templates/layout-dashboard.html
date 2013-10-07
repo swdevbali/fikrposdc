@@ -128,6 +128,9 @@
                 <div class="span3" id="sidebar">
                     <ul class="nav nav-list bs-docs-sidenav nav-collapse collapse">
                         <li>
+                            <a href="{{ url_for('DashboardView:index') }}"><i class="icon-chevron-right"></i>Dashboard</a>
+                        </li>
+                        <li>
                             <a href="{{ url_for('UserView:index') }}"><i class="icon-chevron-right"></i>Users</a>
                         </li>
                         <li>
@@ -149,12 +152,14 @@
     {% block body_nonlogged %}
     {% endblock %}
 {% endif %}
-        <hr class="featurette-divider">
-            <footer>
-      <p align="center"> FikrMalaysia. All rights reserved<br/>
-<a href="https://www.openshift.com/" target="_blank"><img alt="Powered by OpenShift" src="/static/assets/powered-transparent-black.png"></a>
-</p>
-            </footer>
+
+ 
+        <footer>
+            <hr class="featurette-divider">
+            <p align="center"> FikrMalaysia. All rights reserved<br/>
+                <a href="https://www.openshift.com/" target="_blank"><img alt="Powered by OpenShift" src="/static/assets/powered-transparent-black.png"></a>
+            </p>
+        </footer>
 
         <!--/.fluid-container-->
         <script src="/static/vendors/jquery-1.9.1.js"></script>

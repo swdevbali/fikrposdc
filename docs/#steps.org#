@@ -26,15 +26,15 @@ Komponen
 *** DONE [009] Understanding Layout better
 *** DONE [010] Signup    
 *** [012] Signout
+*** DONE [008] Scenario signin
+*** DONE [015] Buat signin spt navbar twitter. Jika benar, langsung ke dashboard. Jika salah, arahkan ke page khusus signup dengan alert errornya. Selain itu, twitter juga bs tuh signup langsung dari homepage. Jadi, u/ signup memang ga mesti dari satu form aja.. Ide segara ini. Besok ngerjain ini pagi2! ;) Insyaaa Allah!
+*** DONE [013] Signin freely, check password. Using hash
+*** DONE [011] Signin after signup=> just say success and show link to signin
+*** DONE [014] Refine signup checking email existing
 ** [004] API Verifikasi ID dari Client ke Server
    Klien mengirimkan username dan password via json ke server herokuapp
    Server menerima dan mencocokkannya dengan database, mengirimkan json true/false jika benar.
    URL /api/log/in/{username}/{encyrpted password}
-** [008] Scenario signin
-*** DONE [015] Buat signin spt navbar twitter. Jika benar, langsung ke dashboard. Jika salah, arahkan ke page khusus signup dengan alert errornya. Selain itu, twitter juga bs tuh signup langsung dari homepage. Jadi, u/ signup memang ga mesti dari satu form aja.. Ide segara ini. Besok ngerjain ini pagi2! ;) Insyaaa Allah!
-*** TODO [013] Signin freely, check password
-*** [011] Signin after signup
-*** [014] Refine signup checking email existing
 ** Dashboard Development
 ** Sempurnakan CRUD paginated table
 *** DONE Menggunakan ajax u/ penghapusan data

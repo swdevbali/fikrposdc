@@ -17,6 +17,13 @@ def before_request():
 def load_user(userid):
     return models.Users.query.get(userid)
 
+class DashboardView(FlaskView):
+    route_base='/dashboard'
+    
+    def index(self):
+        return render_template('dashboard.html')
+
+
 class SignView(FlaskView):
     route_base = '/auth'
 
@@ -262,3 +269,4 @@ DataSet.register(app)
 RegistrationView.register(app)
 SignView.register(app)
 CompanyView.register(app)
+DashboardView.register(app)
