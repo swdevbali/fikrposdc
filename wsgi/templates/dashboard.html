@@ -351,13 +351,28 @@
             {"period": "2012-10", "visits": 1226, "signups": 620},
             {"period": "2012-09", "visits": 2245, "signups": 500}
         ];
+
+     var json = (function () {
+            var json = null;
+            $.ajax({
+                'async': false,
+                'global': false,
+                "url": "{{ url_for('DataSet:monthlySales')}}",
+                'dataType': "json",
+                'success': function (data) {
+                    json = data;
+                }
+            });
+            return json;
+        })();
+
         Morris.Line({
             element: 'hero-graph',
-            data: tax_data,
-            xkey: 'period',
-            xLabels: "month",
-            ykeys: ['visits', 'signups'],
-            labels: ['Visits', 'User signups']
+            data: json,
+            xkey: 'bulan',
+            xLabels: "Bulan",
+            ykeys: ['Cabang A', 'Cabang B', 'Cabang C'],
+            labels:['Cabang A', 'Cabang B', 'Cabang C']
         });
 
 // Morris Bar Chart

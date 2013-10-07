@@ -247,6 +247,16 @@ class DataSet(FlaskView):
         data['aaData']=aaData
         return json.dumps(data)
 
+    @login_required
+    def monthlySales(self):
+        data =[]
+        datum={}
+        data.append({'bulan':'2013-1','Cabang A':100,'Cabang B':200, 'Cabang C':10}) 
+        data.append({'bulan':'2013-2','Cabang A':200,'Cabang B':100, 'Cabang C':200}) 
+        data.append({'bulan':'2013-3','Cabang A':400,'Cabang B':40, 'Cabang C':400}) 
+        return json.dumps(data)
+        
+
 class CompanyView(FlaskView):
     route_base = '/dashboard/manage/company'
 
@@ -263,6 +273,9 @@ class CompanyView(FlaskView):
             return redirect(url_for('CompanyView:profile'))
         return render_template('companies/form.html', 
                                company=models.Companies.query.get(session['company_id']))
+
+
+
 
 DashBoard.register(app)
 UserView.register(app)

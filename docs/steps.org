@@ -35,7 +35,17 @@ Komponen
 *** DONE [013] Signin freely, check password. Using hash
 *** DONE [011] Signin after signup=> just say success and show link to signin
 *** DONE [014] Refine signup checking email existing
-** Dashboard Development
+** TODO Dashboard Development
+*** DONE Prototyping
+*** TODO Apply branch list to dashboard
+**** DONE Understanding how to transfer JSON data to Morris.Line method. A daily/weekly/monthly sales of all branches
+**** TODO Start with Unittest, action to create ReportModel, populate with each branches periodical sales report
+**** TODO Fetch DataSet:monthlySalesReport from views.py. What branches sent is its dailyReport, later python able to create its weekly, monthly or of course, yearly report
+*** Simple report : Daily cash-in from branches
+**** Prepare simple table for accumulated report in database
+**** Using sample data, displayed in chart
+**** Now, work on the client and try to create these data, sent this data to server
+**** Server must be able to receive those data and stored it, ready to be queried by dashboard interface
 ** Sempurnakan CRUD paginated table
 *** DONE Menggunakan ajax u/ penghapusan data
 *** DONE Reload via AJAX
@@ -45,5 +55,5 @@ Komponen
 ** Select navigation of module
 
 * Bug Fixing
-** That jquery.pott.. things
+** DONE That jquery.pott.. things
 
