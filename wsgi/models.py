@@ -56,7 +56,7 @@ class Companies(db.Model):
     address = db.Column(db.String)
     users = db.relation('Users', backref=db.backref('users'))
     token = db.Column(db.String) #for identification of client
-    branches = db.relationship("Branches")
+    branches = db.relationship("Branches", lazy="dynamic")
 
 
     def __init__(self, name=None, address=None, token=None):
@@ -93,8 +93,6 @@ class Sales(db.Model):
     def __init__(self, day=None):
         self.day = day
         
-        
-
 class SaleData(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     sale_id = db.Column(db.Integer, db.ForeignKey('sales.id'))

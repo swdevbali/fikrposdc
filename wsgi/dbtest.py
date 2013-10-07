@@ -30,14 +30,16 @@ class DbTest(unittest.TestCase):
         db.session.commit()
         
         '''sales'''
-        branch1 = company1.branches[0] # branch1 = company1.branches.filter().all() # via query
-        assert branch1.company_id == company1.id
+        branch1 = company1.branches.filter(models.Branches.name=='Kopjar').first()
+        assert branch1.name=='Kopjar' and branch1.company_id == company1.id
+        
 
-        branch1.sales.append(models.Sales(day='2013-02-02'))
+        sale = models.Sales(day='2013-02-02')
+        sale.data.append(models.SaleData(cash_start_of_day = 0, cash_end_of_day = 500000, income = 500000))
+        branch1.sales.append(sale)
         db.session.commit()
-        sales = branch1.sales[0] # harus via query
-        sales.data.append(models.SaleData(cash_start_of_day = 0, cash_end_of_day = 500000, income = 500000))
-        db.session.commit()
+
+        assert sale.id is not None
 
 if __name__ == '__main__':    
     unittest.main()
