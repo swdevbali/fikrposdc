@@ -36,15 +36,14 @@ Komponen
 *** DONE [011] Signin after signup=> just say success and show link to signin
 *** DONE [014] Refine signup checking email existing
 ** TODO Dashboard Development
-*** DONE Prototyping
-*** TODO Apply branch list to dashboard
+*** DONE Dashboard Prototyping
+*** DONE Apply branch list to dashboard
 **** DONE Understanding how to transfer JSON data to Morris.Line method. A daily/weekly/monthly sales of all branches
-**** TODO Start with Unittest, action to create ReportModel, populate with each branches periodical sales report
-**** Fetch DataSet:monthlySalesReport from views.py. What branches sent is its dailyReport, later python able to create its weekly, monthly or of course, yearly report
-*** Simple report : Daily cash-in from branches
-**** Prepare simple table for accumulated report in database
-**** Using sample data, displayed in chart
-**** Now, work on the client and try to create these data, sent this data to server
+*** TODO Full client<->cloud life-cycle of DailyCashFlow
+**** DONE Start with Unittest, action to create ReportModel, populate with each branches periodical sales report. DailyCashFlow introduced! From that model, I think we can generate weekly, yearly, etc. PENDING
+**** DONE Prepare simple table for accumulated report in database
+**** DONE Using sample data, displayed in chart
+**** TODO Now, work on the client and try to create these data, sent this data to server
 **** Server must be able to receive those data and stored it, ready to be queried by dashboard interface
 ** Sempurnakan CRUD paginated table
 *** DONE Menggunakan ajax u/ penghapusan data
