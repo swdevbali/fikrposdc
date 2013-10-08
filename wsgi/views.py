@@ -289,6 +289,24 @@ class DataSet(FlaskView):
             data.append(branch.name)
         return json.dumps(data)
 
+class WebApi(FlaskView):
+    decorators = [login_required]
+    route_base = '/webapi'
+    
+    @route('/upload_daily_cashflow', methods=['POST'])
+    def upload_daily_cashflow(self, cashflow=None):
+        '''
+        without security first, try to upload using JSON here. The JSON will contains all necessary data:
+        - company, branch, username (for auth), and of course, sale data. JSON will be compose in the client side.
+        Now.. how to test this???????
+        Using POST method first, later on whether to use REST or not
+        will return JSON regarding successful upload/not
+        that's all! 
+        After that, refine with adding security username+password and token
+        '''
+        pass
+
+
 class CompanyView(FlaskView):
     route_base = '/dashboard/manage/company'
 

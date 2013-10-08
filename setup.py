@@ -15,6 +15,6 @@ setup(name='Fikr POS DC',
         'flask-classy==0.6.3',
         'Flask-Login==0.2.7',
         'Flask-WTF==1.0.5',
-        'Flask-Rest'
+        'Flask-REST==1.1'
        ],
      )
