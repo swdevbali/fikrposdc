@@ -44,7 +44,7 @@ Komponen
 **** DONE Prepare simple table for accumulated report in database
 **** DONE Using sample data, displayed in chart
 **** TODO Now, work on the client and try to create these data, sent this data to server
-***** REST API ...
+****** REST API ...
 **** Server must be able to receive those data and stored it, ready to be queried by dashboard interface
 ** Sempurnakan CRUD paginated table
 *** DONE Menggunakan ajax u/ penghapusan data
