@@ -252,16 +252,42 @@ class DataSet(FlaskView):
     @route('/daily_cash_flow/<int:company_id>')
     @login_required
     def dailyCashFlow(self, company_id):
+        '''bringing report dailycashflow'''
         data  = []
         datum = {}
 
         company = models.Companies.query.get(company_id)
-        branches = company.branches.all()
+        q = db.session.query(models.DailyCashFlow, models.Branches).with_entities(models.DailyCashFlow.day, models.Branches.name, models.DailyCashFlow.income).\
+            join(models.Branches).\
+            filter_by(company_id = company_id).\
+            order_by(models.DailyCashFlow.day)
         
-        for branch in branches:
-            data.append({'bulan':'2013-1',branch.name:100, branch.name:200, branch.name:10})
+        data  = []
+        datum = {}
+        prev_day = None
+        
+        for row in q.all():
+            if prev_day != row.day:
+                datum = {}
+                datum['hari']= helper.dump_date(row.day)
+                datum[row.name] = row.income
+                prev_day = row.day
+            else:
+                datum[row.name] = row.income
+                data.append(datum)
+                prev_day = row.day
+            
         return json.dumps(data)
-        
+
+    @route('/branches_names/<int:company_id>')
+    @login_required
+    def branches_names(self, company_id):
+        data = []
+        company = models.Companies.query.get(company_id)
+        branches = company.branches.with_entities(models.Branches.name).all()
+        for branch in branches:
+            data.append(branch.name)
+        return json.dumps(data)
 
 class CompanyView(FlaskView):
     route_base = '/dashboard/manage/company'

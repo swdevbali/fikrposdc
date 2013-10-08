@@ -40,7 +40,7 @@ Komponen
 *** TODO Apply branch list to dashboard
 **** DONE Understanding how to transfer JSON data to Morris.Line method. A daily/weekly/monthly sales of all branches
 **** TODO Start with Unittest, action to create ReportModel, populate with each branches periodical sales report
-**** TODO Fetch DataSet:monthlySalesReport from views.py. What branches sent is its dailyReport, later python able to create its weekly, monthly or of course, yearly report
+**** Fetch DataSet:monthlySalesReport from views.py. What branches sent is its dailyReport, later python able to create its weekly, monthly or of course, yearly report
 *** Simple report : Daily cash-in from branches
 **** Prepare simple table for accumulated report in database
 **** Using sample data, displayed in chart

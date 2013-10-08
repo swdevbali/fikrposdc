@@ -91,8 +91,8 @@ class DailyCashFlow(db.Model):
     cash_end_of_day = db.Column(db.Integer)
     income = db.Column(db.Integer) # which is end - start
 
-    def __init__(self, day=None, cash_start_of_day = None, cash_end_of_day = None, income = None):
+    def __init__(self, day=None, cash_start_of_day = None, cash_end_of_day = None):
         self.day = day
         self.cash_start_of_day = cash_start_of_day
         self.cash_end_of_day = cash_end_of_day
-        self.income = income
+        self.income = self.cash_end_of_day - self.cash_start_of_day

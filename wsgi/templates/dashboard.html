@@ -352,27 +352,42 @@
             {"period": "2012-09", "visits": 2245, "signups": 500}
         ];
 
-     var json = (function () {
-            var json = null;
+     var cashFlow = (function () {
+            var cashFlow = null;
             $.ajax({
                 'async': false,
                 'global': false,
                 "url": "{{ url_for('DataSet:dailyCashFlow', company_id=session['company_id'])}}",
                 'dataType': "json",
                 'success': function (data) {
-                    json = data;
+                    cashFlow = data;
                 }
             });
-            return json;
+            return cashFlow;
         })();
 
+     var branches_names = (function () {
+            var branches_names = null;
+            $.ajax({
+                'async': false,
+                'global': false,
+                "url": "{{ url_for('DataSet:branches_names', company_id=session['company_id'])}}",
+                'dataType': "json",
+                'success': function (data) {
+                    branches_names = data;
+                }
+            });
+            return branches_names;
+        })();
+
+     var test = ["Kopjar", "Selangor"];
         Morris.Line({
             element: 'hero-graph',
-            data: json,
-            xkey: 'bulan',
-            xLabels: "Bulan",
-            ykeys: ['Cabang A', 'Cabang B', 'Cabang C'],
-            labels:['Cabang A', 'Cabang B', 'Cabang C']
+            data: cashFlow,
+            xkey: 'hari',
+            xLabels: "Hari",
+            ykeys: branches_names,
+            labels: branches_names 
         });
 
 // Morris Bar Chart

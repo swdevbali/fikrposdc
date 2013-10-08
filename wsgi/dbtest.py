@@ -1,9 +1,18 @@
 import unittest
 from main import db
-import models
-import md5
-import helper
+import models, md5,  helper, json
 
+def dump_datetime(value):
+    """Deserialize datetime object into string form for JSON processing."""
+    if value is None:
+        return None
+    return [value.strftime("%Y-%m-%d"), value.strftime("%H:%M:%S")]
+
+def dump_date(value):
+    """Deserialize datetime object into string form for JSON processing."""
+    if value is None:
+        return None
+    return value.strftime("%Y-%m-%d")
 
 class DbTest(unittest.TestCase):
     def setUp(self):
@@ -34,7 +43,7 @@ class DbTest(unittest.TestCase):
         assert branch1.name=='Kopjar' and branch1.company_id == company1.id
         
         '''first attempt on sales data'''
-        day1 = models.DailyCashFlow(day='2013-01-01',cash_start_of_day = 0, cash_end_of_day = 500000, income = 500000)
+        day1 = models.DailyCashFlow(day='2013-01-01',cash_start_of_day = 0, cash_end_of_day = 500000)
         branch1.dailyCashFlow.append(day1)
         db.session.commit()
         assert day1.id is not None
@@ -43,13 +52,55 @@ class DbTest(unittest.TestCase):
         branch2 = company1.branches.filter(models.Branches.name=='Selangor').first()
         assert branch2.name=='Selangor' and branch2.company_id == branch1.company_id
         
-        '''what do you know, first day, both branches having the same cashflow data'''
+        day1 = models.DailyCashFlow(day='2013-01-01',cash_start_of_day = 300000, cash_end_of_day = 600000)
         branch2.dailyCashFlow.append(day1)
         db.session.commit()
         assert day1.id is not None
 
+        '''2nd day'''
+        day2 = models.DailyCashFlow(day='2013-01-02',cash_start_of_day = 0, cash_end_of_day = 400000)
+        branch1.dailyCashFlow.append(day2)
+
+        day2 = models.DailyCashFlow(day='2013-01-02',cash_start_of_day = 0, cash_end_of_day = 1000000)
+        branch2.dailyCashFlow.append(day2)
+        db.session.commit()
+        assert day2.id is not None
+
+        '''bringing report dailycashflow'''
+        q = db.session.query(models.DailyCashFlow, models.Branches).with_entities(models.DailyCashFlow.day, models.Branches.name, models.DailyCashFlow.income).\
+            join(models.Branches).\
+            filter_by(company_id = company1.id).\
+            order_by(models.DailyCashFlow.day)
+        
+        data  = []
+        datum = {}
+        prev_day = None
+        
+        for row in q.all():
+            if prev_day != row.day:
+                datum = {}
+                datum['hari']= dump_date(row.day)
+                datum[row.name] = row.income
+                prev_day = row.day
+            else:
+                datum[row.name] = row.income
+                data.append(datum)
+                prev_day = row.day
+            
+        print json.dumps(data)
+
+
+        '''3rd day'''
+        day3 = models.DailyCashFlow(day='2013-01-03',cash_start_of_day = 0, cash_end_of_day = 2000000)
+        branch1.dailyCashFlow.append(day3)
+
+        day3 = models.DailyCashFlow(day='2013-01-03',cash_start_of_day = 0, cash_end_of_day = 900000)
+        branch2.dailyCashFlow.append(day3)
+        db.session.commit()
+        assert day3.id is not None
 
         
+                
 
 if __name__ == '__main__':    
     unittest.main()
