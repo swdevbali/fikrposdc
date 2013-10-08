@@ -357,7 +357,7 @@
             $.ajax({
                 'async': false,
                 'global': false,
-                "url": "{{ url_for('DataSet:monthlySales')}}",
+                "url": "{{ url_for('DataSet:dailyCashFlow', company_id=session['company_id'])}}",
                 'dataType': "json",
                 'success': function (data) {
                     json = data;

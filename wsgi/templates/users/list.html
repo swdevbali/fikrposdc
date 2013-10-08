@@ -44,7 +44,7 @@
         $('#example').dataTable( {
             "bProcessing": false,
             "bServerSide": false,
-            "sAjaxSource": "{{ url_for('DataSet:users') }}",
+            "sAjaxSource": "{{ url_for('DataSet:users', company_id=session['company_id']) }}",
             "fnDrawCallback": function (oSettings) {
                 $("a[id^='remove_user_']").click(function(e){  
                     var id = $(e.target).parent().attr('id').split('_')[2];

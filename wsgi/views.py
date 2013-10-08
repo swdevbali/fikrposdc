@@ -216,7 +216,8 @@ class DataSet(FlaskView):
     route_base = '/dataset'
 
     @login_required
-    def users(self):
+    @route('/users/<int:company_id>')
+    def users(self, company_id):
         data = {}
         data['iTotalRecords'] = 2
         data['sEcho'] = 1
@@ -225,35 +226,40 @@ class DataSet(FlaskView):
         aaData = []   
         users=models.Users.query.with_entities(
             models.Users.id, models.Users.username,
-            models.Users.email).filter_by(company_id=session['company_id']).order_by(models.Users.username).all()
+            models.Users.email).filter_by(company_id=company_id).order_by(models.Users.username).all()
         for user in users:
             aaData.append([user.username, user.email, string.join(['<a href="',url_for('UserView:view', user_id=user.id),'"><i class="icon-pencil"></i></a> <a id="remove_user_',`user.id`,'" href="#"><i class="icon-remove"></i></a>'],'')])
     
         data['aaData']=aaData
         return json.dumps(data)
         
+    @route('/branches/<int:company_id>')
     @login_required
-    def branches(self):
+    def branches(self, company_id = None):
         data = {}
         data['iTotalRecords'] = 2
         data['sEcho'] = 1
         data['iTotalDisplayRecords'] =  2    
         
         aaData = []   
-        company = models.Companies.query.get(session['company_id'])    
+        company = models.Companies.query.get(company_id)
         for branch in company.branches:
             aaData.append([branch.name, branch.address, branch.token, string.join(['<a href="',url_for('BranchView:view',branch_id=branch.id),'"><i class="icon-pencil"></i></a> <a id="remove_branch_',`branch.id`,'" href="#"><i class="icon-remove"></i></a>'])])
     
         data['aaData']=aaData
         return json.dumps(data)
 
+    @route('/daily_cash_flow/<int:company_id>')
     @login_required
-    def monthlySales(self):
-        data =[]
-        datum={}
-        data.append({'bulan':'2013-1','Cabang A':100,'Cabang B':200, 'Cabang C':10}) 
-        data.append({'bulan':'2013-2','Cabang A':200,'Cabang B':100, 'Cabang C':200}) 
-        data.append({'bulan':'2013-3','Cabang A':400,'Cabang B':40, 'Cabang C':400}) 
+    def dailyCashFlow(self, company_id):
+        data  = []
+        datum = {}
+
+        company = models.Companies.query.get(company_id)
+        branches = company.branches.all()
+        
+        for branch in branches:
+            data.append({'bulan':'2013-1',branch.name:100, branch.name:200, branch.name:10})
         return json.dumps(data)
         
 

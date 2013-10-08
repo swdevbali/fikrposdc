@@ -33,13 +33,23 @@ class DbTest(unittest.TestCase):
         branch1 = company1.branches.filter(models.Branches.name=='Kopjar').first()
         assert branch1.name=='Kopjar' and branch1.company_id == company1.id
         
-
-        sale = models.Sales(day='2013-02-02')
-        sale.data.append(models.SaleData(cash_start_of_day = 0, cash_end_of_day = 500000, income = 500000))
-        branch1.sales.append(sale)
+        '''first attempt on sales data'''
+        day1 = models.DailyCashFlow(day='2013-01-01',cash_start_of_day = 0, cash_end_of_day = 500000, income = 500000)
+        branch1.dailyCashFlow.append(day1)
         db.session.commit()
+        assert day1.id is not None
 
-        assert sale.id is not None
+        '''completing sale data'''
+        branch2 = company1.branches.filter(models.Branches.name=='Selangor').first()
+        assert branch2.name=='Selangor' and branch2.company_id == branch1.company_id
+        
+        '''what do you know, first day, both branches having the same cashflow data'''
+        branch2.dailyCashFlow.append(day1)
+        db.session.commit()
+        assert day1.id is not None
+
+
+        
 
 if __name__ == '__main__':    
     unittest.main()
