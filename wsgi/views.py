@@ -2,7 +2,7 @@ from main import app, db, login_manager
 from flask import render_template, request, flash, url_for, redirect, abort, jsonify, session, g
 from flask.ext.classy import FlaskView, route
 from flask.ext.login import login_user, logout_user, current_user, login_required, UserMixin
-import models, json,  os, string, forms, helper
+import models, json,  os, string, forms, helper, datetime
 
 
 @app.route('/')
@@ -290,22 +290,75 @@ class DataSet(FlaskView):
         return json.dumps(data)
 
 class WebApi(FlaskView):
-    decorators = [login_required]
-    route_base = '/webapi'
+    route_base = '/api'
     
-    @route('/upload_daily_cashflow', methods=['POST'])
-    def upload_daily_cashflow(self, cashflow=None):
+    @route('/cashflow', methods=['POST'])
+    def cashflow(self):
         '''
         without security first, try to upload using JSON here. The JSON will contains all necessary data:
-        - company, branch, username (for auth), and of course, sale data. JSON will be compose in the client side.
+        - company, branch, username (for auth), and of course, sale data. JSON will be composed in the client side.
         Now.. how to test this???????
         Using POST method first, later on whether to use REST or not
         will return JSON regarding successful upload/not
         that's all! 
         After that, refine with adding security username+password and token
-        '''
-        pass
 
+{ 
+ "branch_name" : "Kopjar",
+ "branch_token" : "empty token",
+ "company_token": "qwerty-82827272",
+  "data" :
+   {
+       "day" : "2013-02-01",
+       "cash_start_of_day": "100000",
+       "cash_end_of_day" : "1500000"
+   } 
+}
+        '''
+        result = {}
+
+        json_data = {}
+        for field in request.form:
+            json_data = json.loads(field)
+
+        print 'hasil json', json_data
+        data = json_data['data']
+        
+        valid = True
+        branch_name = json_data.get('branch_name') if json_data.get('branch_name') else ''
+        branch_token = json_data.get('branch_token') if json_data.get('branch_token') else ''
+        company_token = json_data.get('company_token') if json_data.get('company_token') else ''
+
+        if branch_name == '' or branch_token == '' or company_token == '':
+            result['result']=False
+            result['message']='Empty branch name, branch token and company token is not allowed'
+            return json.dumps(False)
+
+        branch = models.Branches.query.filter_by(name=branch_name, token=branch_token).first()
+ 
+       if branch is None:
+            result['result'] = False
+            result['message'] = string.join(['Either no branch for the name ', branch_name, ', or your branch token is not valid'])
+            return json.dumps(result)        
+
+       
+        
+        day = data.get('day') if data.get('day') else datetime.date.today()
+        cash_start_of_day = int(data.get('cash_start_of_day')) if data.get('cash_start_of_day') else 0
+        cash_end_of_day = int(data.get('cash_end_of_day')) if data.get('cash_end_of_day') else 0
+        income = cash_end_of_day - cash_start_of_day
+
+
+        '''Checking of dirty cashflow is done in machine, here, we may rightaway update it'''
+
+        dailyCashFlow = models.DailyCashFlow(day=day, cash_start_of_day = cash_start_of_day, cash_end_of_day =  cash_end_of_day)
+        branch.dailyCashFlow.append(dailyCashFlow)
+        db.session.commit()
+
+        '''NEXT : maybe another validation, or just one little thing to return the ID to the caller'''
+        result['result'] = True
+        result['message'] = string.join(['Daily cashflow saved successfully with ID=#'], `dailyCashFlow.id`)
+        return json.dumps(result)
 
 class CompanyView(FlaskView):
     route_base = '/dashboard/manage/company'
@@ -335,3 +388,4 @@ RegistrationView.register(app)
 SignView.register(app)
 CompanyView.register(app)
 DashboardView.register(app)
+WebApi.register(app)
