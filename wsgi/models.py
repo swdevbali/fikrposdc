@@ -95,6 +95,9 @@ class DailyCashFlow(db.Model):
         self.day = day
         self.cash_start_of_day = cash_start_of_day
         self.cash_end_of_day = cash_end_of_day
+        self.calculateIncome()
+    
+    def calculateIncome(self):
         self.income = self.cash_end_of_day - self.cash_start_of_day
 
 db.Index('idx1', DailyCashFlow.day, DailyCashFlow.branch_id, unique = True)
