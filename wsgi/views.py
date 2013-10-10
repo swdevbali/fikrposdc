@@ -317,12 +317,22 @@ class WebApi(FlaskView):
         '''
         result = {}
 
-        json_data = {}
+        json_data = None
         for field in request.form:
             json_data = json.loads(field)
 
         print 'hasil json', json_data
-        data = json_data['data']
+
+        if json_data is None:
+            result['result'] = False
+            result['message'] = 'Did not receive any JSON POST data'
+            return json.dumps(result)
+        
+        data = json_data.get('data') if json_data.get('data') else None
+        if data is None:
+            result['result'] = False
+            result['message'] = 'JSON POST data did not contain daily cash flow data'
+            return json.dumps(result)            
         
         valid = True
         branch_name = json_data.get('branch_name') if json_data.get('branch_name') else ''
