@@ -336,7 +336,7 @@ class WebApi(FlaskView):
 
         branch = models.Branches.query.filter_by(name=branch_name, token=branch_token).first()
  
-       if branch is None:
+        if branch is None:
             result['result'] = False
             result['message'] = string.join(['Either no branch for the name ', branch_name, ', or your branch token is not valid'])
             return json.dumps(result)        
@@ -350,14 +350,15 @@ class WebApi(FlaskView):
 
 
         '''Checking of dirty cashflow is done in machine, here, we may rightaway update it'''
-
+        '''NEXT : load existing dailyCashFlow'''
         dailyCashFlow = models.DailyCashFlow(day=day, cash_start_of_day = cash_start_of_day, cash_end_of_day =  cash_end_of_day)
         branch.dailyCashFlow.append(dailyCashFlow)
         db.session.commit()
 
         '''NEXT : maybe another validation, or just one little thing to return the ID to the caller'''
+        print 'Is it?', dailyCashFlow.id
         result['result'] = True
-        result['message'] = string.join(['Daily cashflow saved successfully with ID=#'], `dailyCashFlow.id`)
+        result['message'] = string.join(['Daily cashflow saved successfully with ID=#', `dailyCashFlow.id`])
         return json.dumps(result)
 
 class CompanyView(FlaskView):

@@ -1,6 +1,8 @@
 import unittest
 from main import db
+from sqlalchemy.exc import IntegrityError, DBAPIError, SQLAlchemyError
 import models, md5,  helper, json
+
 
 def dump_datetime(value):
     """Deserialize datetime object into string form for JSON processing."""
@@ -98,6 +100,14 @@ class DbTest(unittest.TestCase):
         branch2.dailyCashFlow.append(day3)
         db.session.commit()
         assert day3.id is not None
+
+        '''test uniqueness'''
+        day3_double = models.DailyCashFlow(day='2013-01-03',cash_start_of_day = 0, cash_end_of_day = 900000)
+        branch2.dailyCashFlow.append(day3_double)
+
+        #self.assertRaises(SQLAlchemyError, db.session.commit)
+        with self.assertRaises(IntegrityError):
+            db.session.commit()
 
         
                 
