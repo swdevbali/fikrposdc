@@ -1,3 +1,5 @@
+FikrPOS : An Elegant Cloud Based Point of Sales Solution for You
+* Technologies
 ** Server Python on Redhat Openshift
 Komponen
    Menerima kiriman rekap transaksi harian
@@ -8,6 +10,7 @@ Komponen
 ** Klien C# Desktop run on Windows
   Mengirimkan data transaksi ke pusat
   Berkomunikasi ke server via JSON
+
 * User Cards
 ** DONE [001] Aplikasi Fikrposdc run locally and synched to Cloud, vice versa
    Aplikasi sudah bisa berjalan baik secara lokal/cloud : db dibuat setiap run
@@ -26,35 +29,48 @@ Komponen
 *** DONE [009] Understanding Layout better
 *** DONE [010] Signup    
 *** [012] Signout
-** [004] API Verifikasi ID dari Client ke Server
-   Klien mengirimkan username dan password via json ke server herokuapp
-   Server menerima dan mencocokkannya dengan database, mengirimkan json true/false jika benar.
-   URL /api/log/in/{username}/{encyrpted password}
+** DONE [009] Full client<->cloud life-cycle of DailyCashFlow
+**** DONE Start with Unittest, action to create ReportModel, populate with each branches periodical sales report. DailyCashFlow introduced! From that model, I think we can generate weekly, yearly, etc. PENDING
+**** DONE Prepare simple table for accumulated report in database
+**** DONE Using sample data, displayed in chart
+**** DONE Now, work on the client and try to create these data, sent this data to server
+     Emulate POST request from within this webapp first
+***** REST API ...
+**** DONE Server must be able to receive those data and stored it, ready to be queried by dashboard interface
 ** DONE [008] Scenario signin
 *** DONE [015] Buat signin spt navbar twitter. Jika benar, langsung ke dashboard. Jika salah, arahkan ke page khusus signup dengan alert errornya. Selain itu, twitter juga bs tuh signup langsung dari homepage. Jadi, u/ signup memang ga mesti dari satu form aja.. Ide segara ini. Besok ngerjain ini pagi2! ;) Insyaaa Allah!
 *** DONE [013] Signin freely, check password. Using hash
 *** DONE [011] Signin after signup=> just say success and show link to signin
 *** DONE [014] Refine signup checking email existing
-** TODO Dashboard Development
+** DONE [010] First iteration/POC of Dashboard Development
 *** DONE Dashboard Prototyping
 *** DONE Apply branch list to dashboard
 **** DONE Understanding how to transfer JSON data to Morris.Line method. A daily/weekly/monthly sales of all branches
-*** TODO Full client<->cloud life-cycle of DailyCashFlow
-**** DONE Start with Unittest, action to create ReportModel, populate with each branches periodical sales report. DailyCashFlow introduced! From that model, I think we can generate weekly, yearly, etc. PENDING
-**** DONE Prepare simple table for accumulated report in database
-**** DONE Using sample data, displayed in chart
-**** TODO Now, work on the client and try to create these data, sent this data to server
-     Emulate POST request from within this webapp first
-***** REST API ...
-**** Server must be able to receive those data and stored it, ready to be queried by dashboard interface
-** Sempurnakan CRUD paginated table
+** [004] Security of API
+*** Verifikasi ID dari Client ke Server
+   Klien mengirimkan username dan password via json ke server herokuapp
+   Server menerima dan mencocokkannya dengan database, mengirimkan json true/false jika benar.
+   URL /api/log/in/{username}/{encyrpted password}
+** [011] Sempurnakan CRUD paginated table
 *** DONE Menggunakan ajax u/ penghapusan data
 *** DONE Reload via AJAX
 *** Paginasi
 *** Search box
-** Pengiriman report data transaksi harian
+** [012] Pengiriman report data transaksi harian
+   Bisa dibuat seamless semacam DropBox, atau by action dengan tombol closing and update to server di akhir sesi
+   Fokus ke pengaturan sesi terlebih dahulu
+* Cloud Concept
+  Solusi ditawarkan dalam dua plan : personal plan (bayangkan satu unit POS) dan cloud plan (berfungsi sebagai Data Center/Distribution Center). Kapanpun dari personal plan, selalu bisa diupgrade ke cloud plan. Ini untuk memperluas pasar, dimana user tidak/belum memiliki koneksi internet. Atau memang belum tertarik untuk menggunakan solusi Cloud yang mungkin dirasanya terlalu besar/berlebihan untuk kebutuhannya saat ini.
+** Cloud Plan
+   .:. Ini merupakan solusi skala besar / mobility, dengan banyak branches yang membutuhkan manajemen dari suatu Distribution Center terpusat
+   User Signup terlebih dahulu dilakukan di cloud, untuk kemudian user bisa mendownload aplikasinya.
+** Personal Plan
+  
+** TODO [013] Refine Session Manajemen : Make it more user friendly
+*** TODO Review C# code
+** [014] Product and category initialization from Cloud
+* Minor Things
 ** Select navigation of module
-
 * Bug Fixing
 ** DONE That jquery.pott.. things
 
