@@ -60,30 +60,7 @@ Komponen
 ** [012] Pengiriman report data transaksi harian
    Bisa dibuat seamless semacam DropBox, atau by action dengan tombol closing and update to server di akhir sesi
    Fokus ke pengaturan sesi terlebih dahulu
-* Cloud Concept of FikrPOS
-  FikrPOS solution is offer with two plans :
-  1. Personal plan
 
-     For single unit of POS system (maybe a small minimarket with only one unit of installation), but still want to manage their system using a computerized POS system. Consisting of a single PC + printer + barcode scanner. Without the need to connect itself to the internet for a Distribution Control system.
-  2. Cloud plan 
-
-     This is the case that we dealing with "Koperasi Penjara", where the system consists of a several branches, each with multiple installation of POS sytem, where all the branches need to be managed by a centralized Distribution Center in the internet (=cloud. Here, the term cloud is interchangeably with internet)
-
-  Anytime user can upgrade themself from Personal Plan to Cloud Plan. I create this arrrangement, to target a larger audience : those who currently didn't want/know the benefit of having their POS data backed up to the cloud. In the process, we can try patiently to persuade them to upgrade to Cloud plan.
-** Personal Plan
-   Personal Plan is actually just a simplified version of Cloud plan. Actually, whether user install POS client as Personal Plan or as Cloud Plan, they are still using the same application. The different is just that in Personal Plan, they can't use the POS client to get/stored data from/to the cloud. This mean, upgrading a personal plan is as simple as giving them the necessary token to be able to login to the cloud.
-
-** Cloud Plan
-   All the features that we already agreed are here : multiple branches with one single Distribution Centre where all their product, category and daily cashflow is seamlessly stored. But with just one little extra addition : everyone can signup to this DC, and have access to all feature that Kopjar has. That's all there is! I strive to make this solution as sustainable as possible. Meaning, we don't do extra work (or as little as possible) when our user base grown large (Amiin).
-
-   We really get helped from www.openshift.com. Alhamdulillah. Without it, I simply can't think of a better way of making a DC system. I know that we previously plan to get ourselves a Windows Based VPS. But it's just too costly and yet, I am not that enthusiast in coding for a Windows Based Server/Web application. Openshift offer a generous workable free plan solution : 1 GB quota. I think we can live with a free plan for our initial launch of the application. Let see our progress, and if we do need an upgrade, we can pay them USD 20/month. I am sure, if we do need to pay them in that sums, this mean our business already running great.
-
-*** Features of Cloud Plan
-
-
-** TODO [013] Refine Session Manajemen : Make it more user friendly
-*** TODO Review C# code
-** [014] Product and category initialization from Cloud
 * Minor Things
 ** Select navigation of module
 * Bug Fixing

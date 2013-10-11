@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+               "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+lang="en" xml:lang="en">
+<head>
+<title>FikrPOS - An Elegant POS Cloud Based Solution for You</title>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+<meta name="generator" content="Org-mode"/>
+<meta name="generated" content="2013-10-11 23:36:09 WIT"/>
+<meta name="author" content="swdev"/>
+<meta name="description" content=""/>
+<meta name="keywords" content=""/>
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  html { font-family: Times, serif; font-size: 12pt; }
+  .title  { text-align: center; }
+  .todo   { color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #add8e6; font-weight:normal }
+  .target { }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  p.verse { margin-left: 3% }
+  pre {
+	border: 1pt solid #AEBDCC;
+	background-color: #F3F5F7;
+	padding: 5pt;
+	font-family: courier, monospace;
+        font-size: 90%;
+        overflow:auto;
+  }
+  table { border-collapse: collapse; }
+  td, th { vertical-align: top; }
+  dt { font-weight: bold; }
+  div.figure { padding: 0.5em; }
+  div.figure p { text-align: center; }
+  .linenr { font-size:smaller }
+  .code-highlighted {background-color:#ffff00;}
+  .org-info-js_info-navigation { border-style:none; }
+  #org-info-js_console-label { font-size:10px; font-weight:bold;
+                               white-space:nowrap; }
+  .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
+                                 font-weight:bold; }
+  /*]]>*/-->
+</style>
+<script type="text/javascript">
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+
+<h1 class="title">FikrPOS - An Elegant POS Cloud Based Solution for You</h1>
+
+
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">1 Cloud Concept in FikrPOS </a>
+<ul>
+<li><a href="#sec-1.1">1.1 Personal Plan </a></li>
+<li><a href="#sec-1.2">1.2 Cloud Plan </a></li>
+</ul>
+</li>
+<li><a href="#sec-2">2 Pricing </a></li>
+<li><a href="#sec-3">3 Cloud Feature </a></li>
+<li><a href="#sec-4">4 Coding Task </a>
+<ul>
+<li><a href="#sec-4.1">4.1 Refine Session Manajemen : Make it more user friendly </a>
+<ul>
+<li><a href="#sec-4.1.1">4.1.1 Review C# code </a></li>
+</ul>
+</li>
+<li><a href="#sec-4.2">4.2 Product and category initialization from Cloud </a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-1" class="outline-2">
+<h2 id="sec-1"><span class="section-number-2">1</span> Cloud Concept in FikrPOS </h2>
+<div class="outline-text-2" id="text-1">
+
+<p>FikrPOS solution is offer with two plans :
+</p><ol>
+<li>
+Personal Plan
+
+<p>
+For single unit of POS system (maybe a small minimarket with only one unit of installation), but still want to manage their system using a computerized POS system. Consisting of a single PC + printer + barcode scanner. Without the need to connect itself to the internet for a Distribution Control system.
+</p></li>
+<li>
+Cloud Plan 
+
+<p>
+This is the case that we dealing with "Koperasi Penjara", where the system consists of a several branches, each with multiple installation of POS sytem, where all the branches need to be managed by a centralized Distribution Center in the internet (=cloud. Here, the term cloud is interchangeably with internet)
+</p>
+</li>
+</ol>
+
+<p>Anytime user can upgrade themself from Personal Plan to Cloud Plan. I create this arrrangement, to target a larger audience : those who currently didn't want/know the benefit of having their POS data backed up to the cloud. In the process, we can try patiently to persuade them to upgrade to Cloud plan.
+</p>
+</div>
+
+<div id="outline-container-1.1" class="outline-3">
+<h3 id="sec-1.1"><span class="section-number-3">1.1</span> Personal Plan </h3>
+<div class="outline-text-3" id="text-1.1">
+
+<p>Personal Plan is actually just a simplified version of Cloud plan. Actually, whether user install POS client as Personal Plan or as Cloud Plan, they are still using the same application. The different is just that in Personal Plan, they can't use the POS client to get/stored data from/to the cloud. This mean, upgrading a personal plan is as simple as giving them the necessary token to be able to login to the cloud.
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-1.2" class="outline-3">
+<h3 id="sec-1.2"><span class="section-number-3">1.2</span> Cloud Plan </h3>
+<div class="outline-text-3" id="text-1.2">
+
+<p>All the features that we already agreed are here : multiple branches with one single Distribution Centre where all their product, category and daily cashflow is seamlessly stored. But with just one little extra addition : everyone can signup to this DC, and have access to all feature that Kopjar has. That's all there is! I strive to make this solution as sustainable as possible. Meaning, we don't do extra work (or as little as possible) when our user base grown large (Amiin).
+</p>
+<p>
+We really get helped from <a href="http://www.openshift.com">http://www.openshift.com</a>. Alhamdulillah. Without it, I simply can't think of a better way of making a DC system. I know that we previously plan to get ourselves a Windows Based VPS. But it's just too costly and yet, I am not that enthusiast in coding for a Windows Based Server/Web application. Openshift offer a generous workable free plan solution : 1 GB quota. I think we can live with a free plan for our initial launch of the application. Let see our progress, and if we do need an upgrade, we can pay them USD 20/month. I am sure, if we do need to pay them in that sums, this mean our business already running great.
+</p>
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-2" class="outline-2">
+<h2 id="sec-2"><span class="section-number-2">2</span> Pricing </h2>
+<div class="outline-text-2" id="text-2">
+
+<p>One main reason why we should consider a Cloud Based Solution, is to be able to charge user in monthly/anually. We should discuss this more, but I think only if we have already established a solid solution for Kopjar. As a guide, a Personal Plan should let user pay our product once and for all. While with a Cloud Plan &ndash;as it use server resource&ndash; we should charge them monthly/anually (or maybe initially and then monthly/anually)
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-3" class="outline-2">
+<h2 id="sec-3"><span class="section-number-2">3</span> Cloud Feature </h2>
+<div class="outline-text-2" id="text-3">
+
+<p>This list may already included what we already agreed upon, but with added feature as it's now being constructed as cloud solution.
+</p><ol>
+</ol>
+</div>
+
+</div>
+
+<div id="outline-container-4" class="outline-2">
+<h2 id="sec-4"><span class="section-number-2">4</span> Coding Task </h2>
+<div class="outline-text-2" id="text-4">
+
+
+</div>
+
+<div id="outline-container-4.1" class="outline-3">
+<h3 id="sec-4.1"><span class="section-number-3">4.1</span> <span class="todo TODO"> TODO</span> Refine Session Manajemen : Make it more user friendly </h3>
+<div class="outline-text-3" id="text-4.1">
+
+
+</div>
+
+<div id="outline-container-4.1.1" class="outline-4">
+<h4 id="sec-4.1.1"><span class="section-number-4">4.1.1</span> <span class="todo TODO"> TODO</span> Review C# code </h4>
+<div class="outline-text-4" id="text-4.1.1">
+
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-4.2" class="outline-3">
+<h3 id="sec-4.2"><span class="section-number-3">4.2</span> Product and category initialization from Cloud </h3>
+<div class="outline-text-3" id="text-4.2">
+
+</div>
+</div>
+</div>
+<div id="postamble">
+<p class="author"> Author: swdev
+<a href="mailto:swdev@swdev-platform">&lt;swdev@swdev-platform&gt;</a>
+</p>
+<p class="date"> Date: 2013-10-11 23:36:09 WIT</p>
+<p class="creator">HTML generated by org-mode 6.33x in emacs 23</p>
+</div>
+</div>
+</body>
+</html>

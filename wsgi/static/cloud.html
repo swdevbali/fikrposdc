@@ -1,14 +1,14 @@
-<?xml version="1.0" encoding="iso-8859-1"?>
+<?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
                "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
 lang="en" xml:lang="en">
 <head>
-<title>FikrPOS : An Elegant Cloud Based Point of Sales Solution for You</title>
-<meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1"/>
+<title>FikrPOS - An Elegant POS Cloud Based Solution for You</title>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2013-10-11 16:54:49 WIT"/>
-<meta name="author" content="swdev"/>
+<meta name="generated" content="2013-10-12 00:25:25 WIT"/>
+<meta name="author" content="Eko Wibowo"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
 <style type="text/css">
@@ -70,85 +70,34 @@ lang="en" xml:lang="en">
 <body>
 <div id="content">
 
-<h1 class="title">FikrPOS : An Elegant Cloud Based Point of Sales Solution for You</h1>
+<h1 class="title">FikrPOS - An Elegant POS Cloud Based Solution for You</h1>
 
 
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#sec-1">1 Technologies </a>
+<li><a href="#sec-1">1 Cloud Concept in FikrPOS </a>
 <ul>
-<li><a href="#sec-1.1">1.1 Server Python on Redhat Openshift </a></li>
-<li><a href="#sec-1.2">1.2 Klien C# Desktop run on Windows </a></li>
+<li><a href="#sec-1.1">1.1 Personal Plan </a></li>
+<li><a href="#sec-1.2">1.2 Cloud Plan </a></li>
 </ul>
 </li>
-<li><a href="#sec-2">2 User Cards </a>
+<li><a href="#sec-2">2 Pricing </a></li>
+<li><a href="#sec-3">3 Cloud Features </a></li>
+<li><a href="#sec-4">4 Coding Task </a>
 <ul>
-<li><a href="#sec-2.1">2.1  Aplikasi Fikrposdc run locally and synched to Cloud, vice versa </a></li>
-<li><a href="#sec-2.2">2.2  Users CRUD </a></li>
-<li><a href="#sec-2.3">2.3  Gunakan Admin Dashboard </a></li>
-<li><a href="#sec-2.4">2.4  Tambahkan konsep Company, sehingga aplikasi ini bisa menjadi solusi cloud </a></li>
-<li><a href="#sec-2.5">2.5  Branch management </a></li>
-<li><a href="#sec-2.6">2.6  Scenario pemakai baru : register user dan register company </a>
+<li><a href="#sec-4.1">4.1 Creating application initialisation scenario with DC communication in mind. Personal plan is skipped at the moment. </a></li>
+<li><a href="#sec-4.2">4.2 Refine Daily Session Manajemen : Make it more user friendly. Currently, it still confusing </a>
 <ul>
-<li><a href="#sec-2.6.1">2.6.1  Create a homepage first, then the current / (index) will be use as /home </a></li>
-<li><a href="#sec-2.6.2">2.6.2  Understanding Layout better </a></li>
-<li><a href="#sec-2.6.3">2.6.3 [10] Signup </a></li>
-<li><a href="#sec-2.6.4">2.6.4 [11] Signout </a></li>
+<li><a href="#sec-4.2.1">4.2.1 Review C# code </a></li>
+<li><a href="#sec-4.2.2">4.2.2 Focus on streamlining the starting/ending of session process </a></li>
 </ul>
 </li>
-<li><a href="#sec-2.7">2.7  Full client&lt;-&gt;cloud life-cycle of DailyCashFlow </a></li>
-<li><a href="#sec-2.8">2.8  Scenario signin </a>
-<ul>
-<li><a href="#sec-2.8.1">2.8.1 [12] Buat signin spt navbar twitter. Jika benar, langsung ke dashboard. Jika salah, arahkan ke page khusus signup dengan alert errornya. Selain itu, twitter juga bs tuh signup langsung dari homepage. Jadi, u/ signup memang ga mesti dari satu form aja.. Ide segara ini. Besok ngerjain ini pagi2! ;) Insyaaa Allah! </a></li>
-<li><a href="#sec-2.8.2">2.8.2 [13] Signin freely, check password. Using hash </a></li>
-<li><a href="#sec-2.8.3">2.8.3 [14] Signin after signup=&gt; just say success and show link to signin </a></li>
-<li><a href="#sec-2.8.4">2.8.4 [15] Refine signup checking email existing </a></li>
-</ul>
-</li>
-<li><a href="#sec-2.9">2.9 [10] First iteration/POC of Dashboard Development </a>
-<ul>
-<li><a href="#sec-2.9.1">2.9.1 Dashboard Prototyping </a></li>
-<li><a href="#sec-2.9.2">2.9.2 Apply branch list to dashboard </a></li>
-</ul>
-</li>
-<li><a href="#sec-2.10">2.10  Security of API </a>
-<ul>
-<li><a href="#sec-2.10.1">2.10.1 Verifikasi ID dari Client ke Server </a></li>
-</ul>
-</li>
-<li><a href="#sec-2.11">2.11 [14] Sempurnakan CRUD paginated table </a>
-<ul>
-<li><a href="#sec-2.11.1">2.11.1 Menggunakan ajax u/ penghapusan data </a></li>
-<li><a href="#sec-2.11.2">2.11.2 Reload via AJAX </a></li>
-<li><a href="#sec-2.11.3">2.11.3 Paginasi </a></li>
-<li><a href="#sec-2.11.4">2.11.4 Search box </a></li>
-</ul>
-</li>
-<li><a href="#sec-2.12">2.12 [11] Pengiriman report data transaksi harian </a></li>
-</ul>
-</li>
-<li><a href="#sec-3">3 Cloud Concept of FikrPOS </a>
-<ul>
-<li><a href="#sec-3.1">3.1 Cloud Plan </a></li>
-<li><a href="#sec-3.2">3.2 Personal Plan </a></li>
-<li><a href="#sec-3.3">3.3 [13] Refine Session Manajemen : Make it more user friendly </a>
-<ul>
-<li><a href="#sec-3.3.1">3.3.1 Review C# code </a></li>
-</ul>
-</li>
-<li><a href="#sec-3.4">3.4 [15] Product and category initialization from Cloud </a></li>
-</ul>
-</li>
-<li><a href="#sec-4">4 Minor Things </a>
-<ul>
-<li><a href="#sec-4.1">4.1 Select navigation of module </a></li>
-</ul>
-</li>
-<li><a href="#sec-5">5 Bug Fixing </a>
-<ul>
-<li><a href="#sec-5.1">5.1 That jquery.pott.. things </a></li>
+<li><a href="#sec-4.3">4.3 Product and category initialization from Cloud </a></li>
+<li><a href="#sec-4.4">4.4 Branch, User and POS instance registering to the Cloud </a></li>
+<li><a href="#sec-4.5">4.5 Refine Printing feature </a></li>
+<li><a href="#sec-4.6">4.6 FINAL : Test overall functionality of the system </a></li>
 </ul>
 </li>
 </ul>
@@ -156,309 +105,19 @@ lang="en" xml:lang="en">
 </div>
 
 <div id="outline-container-1" class="outline-2">
-<h2 id="sec-1"><span class="section-number-2">1</span> Technologies </h2>
+<h2 id="sec-1"><span class="section-number-2">1</span> Cloud Concept in FikrPOS </h2>
 <div class="outline-text-2" id="text-1">
 
-
-</div>
-
-<div id="outline-container-1.1" class="outline-3">
-<h3 id="sec-1.1"><span class="section-number-3">1.1</span> Server Python on Redhat Openshift </h3>
-<div class="outline-text-3" id="text-1.1">
-
-<p>Komponen
-Menerima kiriman rekap transaksi harian
-Menyediakan data terpusat dari laporan transaksi semua branches.  
-Menampilkan laporan secara grafik yang informatif
-Menggunakan Pyramid + PostgreSQL di Herokuapp
-Berkomunikasi ke klien via JSON
-</p></div>
-
-</div>
-
-<div id="outline-container-1.2" class="outline-3">
-<h3 id="sec-1.2"><span class="section-number-3">1.2</span> Klien C# Desktop run on Windows </h3>
-<div class="outline-text-3" id="text-1.2">
-
-<p>Mengirimkan data transaksi ke pusat
-Berkomunikasi ke server via JSON
-</p>
-</div>
-</div>
-
-</div>
-
-<div id="outline-container-2" class="outline-2">
-<h2 id="sec-2"><span class="section-number-2">2</span> User Cards </h2>
-<div class="outline-text-2" id="text-2">
-
-
-</div>
-
-<div id="outline-container-2.1" class="outline-3">
-<h3 id="sec-2.1"><span class="section-number-3">2.1</span> <span class="done DONE"> DONE</span> <sup><a class="footref" name="fnr.1" href="#fn.1">1</a></sup> Aplikasi Fikrposdc run locally and synched to Cloud, vice versa </h3>
-<div class="outline-text-3" id="text-2.1">
-
-<p>Aplikasi sudah bisa berjalan baik secara lokal/cloud : db dibuat setiap run
-Dari server sudah bisa ngedump ke lokal, dan sudah bisa diimport di klien : ini tidak perlu lagi, karena ada db.create<sub>all</sub>() dari SQLAlchemy
-</p>
-</div>
-
-</div>
-
-<div id="outline-container-2.2" class="outline-3">
-<h3 id="sec-2.2"><span class="section-number-3">2.2</span> <span class="done DONE"> DONE</span> <sup><a class="footref" name="fnr.2" href="#fn.2">2</a></sup> Users CRUD </h3>
-<div class="outline-text-3" id="text-2.2">
-
-</div>
-
-</div>
-
-<div id="outline-container-2.3" class="outline-3">
-<h3 id="sec-2.3"><span class="section-number-3">2.3</span> <span class="done DONE"> DONE</span> <sup><a class="footref" name="fnr.3" href="#fn.3">3</a></sup> Gunakan Admin Dashboard </h3>
-<div class="outline-text-3" id="text-2.3">
-
-</div>
-
-</div>
-
-<div id="outline-container-2.4" class="outline-3">
-<h3 id="sec-2.4"><span class="section-number-3">2.4</span> <span class="done DONE"> DONE</span> <sup><a class="footref" name="fnr.4" href="#fn.4">4</a></sup> Tambahkan konsep Company, sehingga aplikasi ini bisa menjadi solusi cloud </h3>
-<div class="outline-text-3" id="text-2.4">
-
-</div>
-
-</div>
-
-<div id="outline-container-2.5" class="outline-3">
-<h3 id="sec-2.5"><span class="section-number-3">2.5</span> <span class="done DONE"> DONE</span> <sup><a class="footref" name="fnr.5" href="#fn.5">5</a></sup> Branch management </h3>
-<div class="outline-text-3" id="text-2.5">
-
-<p>Diperlukan untuk tempat penyimpanan semua data transaksi/reporting dari branch
-Tiap branch akan punya user yang menjadi admin dari branch ini (attach ke user)   
-Saat pengiriman, token yang harus dikirimkan adalah username + password + branch<sub>id</sub>, akan gagal jika user tidak menjadi admin dari branch tersebut <sup><a class="footref" name="fnr.6" href="#fn.6">6</a></sup>
-Banyak branch.. satu user aja. Satu user hanya boleh manage satu branch   
-</p></div>
-
-</div>
-
-<div id="outline-container-2.6" class="outline-3">
-<h3 id="sec-2.6"><span class="section-number-3">2.6</span> <span class="done DONE"> DONE</span> <sup><a class="footref" name="fnr.7" href="#fn.7">7</a></sup> Scenario pemakai baru : register user dan register company </h3>
-<div class="outline-text-3" id="text-2.6">
-
-
-</div>
-
-<div id="outline-container-2.6.1" class="outline-4">
-<h4 id="sec-2.6.1"><span class="section-number-4">2.6.1</span> <span class="done DONE"> DONE</span> <sup><a class="footref" name="fnr.8" href="#fn.8">8</a></sup> Create a homepage first, then the current / (index) will be use as /home </h4>
-<div class="outline-text-4" id="text-2.6.1">
-
-</div>
-
-</div>
-
-<div id="outline-container-2.6.2" class="outline-4">
-<h4 id="sec-2.6.2"><span class="section-number-4">2.6.2</span> <span class="done DONE"> DONE</span> <sup><a class="footref" name="fnr.9" href="#fn.9">9</a></sup> Understanding Layout better </h4>
-<div class="outline-text-4" id="text-2.6.2">
-
-</div>
-
-</div>
-
-<div id="outline-container-2.6.3" class="outline-4">
-<h4 id="sec-2.6.3"><span class="section-number-4">2.6.3</span> <span class="done DONE"> DONE</span> <sup><a class="footref" name="fnr.10" href="#fn.10">10</a></sup> Signup </h4>
-<div class="outline-text-4" id="text-2.6.3">
-
-</div>
-
-</div>
-
-<div id="outline-container-2.6.4" class="outline-4">
-<h4 id="sec-2.6.4"><span class="section-number-4">2.6.4</span> [11] Signout </h4>
-<div class="outline-text-4" id="text-2.6.4">
-
-</div>
-</div>
-
-</div>
-
-<div id="outline-container-2.7" class="outline-3">
-<h3 id="sec-2.7"><span class="section-number-3">2.7</span> <span class="done DONE"> DONE</span> <sup><a class="footref" name="fnr.9.2" href="#fn.9">9</a></sup> Full client&lt;-&gt;cloud life-cycle of DailyCashFlow </h3>
-<div class="outline-text-3" id="text-2.7">
-
-<ul>
-<li id="sec-2.7.1"><span class="done DONE"> DONE</span> Start with Unittest, action to create ReportModel, populate with each branches periodical sales report. DailyCashFlow introduced! From that model, I think we can generate weekly, yearly, etc. PENDING <br/>
-</li>
-<li id="sec-2.7.2"><span class="done DONE"> DONE</span> Prepare simple table for accumulated report in database <br/>
-</li>
-<li id="sec-2.7.3"><span class="done DONE"> DONE</span> Using sample data, displayed in chart <br/>
-</li>
-<li id="sec-2.7.4"><span class="done DONE"> DONE</span> Now, work on the client and try to create these data, sent this data to server <br/>
-Emulate POST request from within this webapp first
-<ul>
-<li id="sec-2.7.4.1">REST API &hellip; <br/>
-</li>
-</ul>
-</li>
-<li id="sec-2.7.5"><span class="done DONE"> DONE</span> Server must be able to receive those data and stored it, ready to be queried by dashboard interface <br/>
-</li>
-</ul>
-</div>
-
-</div>
-
-<div id="outline-container-2.8" class="outline-3">
-<h3 id="sec-2.8"><span class="section-number-3">2.8</span> <span class="done DONE"> DONE</span> <sup><a class="footref" name="fnr.8.2" href="#fn.8">8</a></sup> Scenario signin </h3>
-<div class="outline-text-3" id="text-2.8">
-
-
-</div>
-
-<div id="outline-container-2.8.1" class="outline-4">
-<h4 id="sec-2.8.1"><span class="section-number-4">2.8.1</span> <span class="done DONE"> DONE</span> <sup><a class="footref" name="fnr.12" href="#fn.12">12</a></sup> Buat signin spt navbar twitter. Jika benar, langsung ke dashboard. Jika salah, arahkan ke page khusus signup dengan alert errornya. Selain itu, twitter juga bs tuh signup langsung dari homepage. Jadi, u/ signup memang ga mesti dari satu form aja.. Ide segara ini. Besok ngerjain ini pagi2! ;) Insyaaa Allah! </h4>
-<div class="outline-text-4" id="text-2.8.1">
-
-</div>
-
-</div>
-
-<div id="outline-container-2.8.2" class="outline-4">
-<h4 id="sec-2.8.2"><span class="section-number-4">2.8.2</span> <span class="done DONE"> DONE</span> <sup><a class="footref" name="fnr.13" href="#fn.13">13</a></sup> Signin freely, check password. Using hash </h4>
-<div class="outline-text-4" id="text-2.8.2">
-
-</div>
-
-</div>
-
-<div id="outline-container-2.8.3" class="outline-4">
-<h4 id="sec-2.8.3"><span class="section-number-4">2.8.3</span> <span class="done DONE"> DONE</span> <sup><a class="footref" name="fnr.14" href="#fn.14">14</a></sup> Signin after signup=&gt; just say success and show link to signin </h4>
-<div class="outline-text-4" id="text-2.8.3">
-
-</div>
-
-</div>
-
-<div id="outline-container-2.8.4" class="outline-4">
-<h4 id="sec-2.8.4"><span class="section-number-4">2.8.4</span> <span class="done DONE"> DONE</span> <sup><a class="footref" name="fnr.15" href="#fn.15">15</a></sup> Refine signup checking email existing </h4>
-<div class="outline-text-4" id="text-2.8.4">
-
-</div>
-</div>
-
-</div>
-
-<div id="outline-container-2.9" class="outline-3">
-<h3 id="sec-2.9"><span class="section-number-3">2.9</span> <span class="done DONE"> DONE</span> <sup><a class="footref" name="fnr.10.2" href="#fn.10">10</a></sup> First iteration/POC of Dashboard Development </h3>
-<div class="outline-text-3" id="text-2.9">
-
-
-</div>
-
-<div id="outline-container-2.9.1" class="outline-4">
-<h4 id="sec-2.9.1"><span class="section-number-4">2.9.1</span> <span class="done DONE"> DONE</span> Dashboard Prototyping </h4>
-<div class="outline-text-4" id="text-2.9.1">
-
-</div>
-
-</div>
-
-<div id="outline-container-2.9.2" class="outline-4">
-<h4 id="sec-2.9.2"><span class="section-number-4">2.9.2</span> <span class="done DONE"> DONE</span> Apply branch list to dashboard </h4>
-<div class="outline-text-4" id="text-2.9.2">
-
-<ul>
-<li id="sec-2.9.2.1"><span class="done DONE"> DONE</span> Understanding how to transfer JSON data to Morris.Line method. A daily/weekly/monthly sales of all branches <br/>
-</li>
-</ul>
-</div>
-</div>
-
-</div>
-
-<div id="outline-container-2.10" class="outline-3">
-<h3 id="sec-2.10"><span class="section-number-3">2.10</span> [6] Security of API </h3>
-<div class="outline-text-3" id="text-2.10">
-
-
-</div>
-
-<div id="outline-container-2.10.1" class="outline-4">
-<h4 id="sec-2.10.1"><span class="section-number-4">2.10.1</span> Verifikasi ID dari Client ke Server </h4>
-<div class="outline-text-4" id="text-2.10.1">
-
-<p>Klien mengirimkan username dan password via json ke server herokuapp
-Server menerima dan mencocokkannya dengan database, mengirimkan json true/false jika benar.
-URL /api/log/in/{username}/{encyrpted password}
-</p></div>
-</div>
-
-</div>
-
-<div id="outline-container-2.11" class="outline-3">
-<h3 id="sec-2.11"><span class="section-number-3">2.11</span> [14] Sempurnakan CRUD paginated table </h3>
-<div class="outline-text-3" id="text-2.11">
-
-
-</div>
-
-<div id="outline-container-2.11.1" class="outline-4">
-<h4 id="sec-2.11.1"><span class="section-number-4">2.11.1</span> <span class="done DONE"> DONE</span> Menggunakan ajax u/ penghapusan data </h4>
-<div class="outline-text-4" id="text-2.11.1">
-
-</div>
-
-</div>
-
-<div id="outline-container-2.11.2" class="outline-4">
-<h4 id="sec-2.11.2"><span class="section-number-4">2.11.2</span> <span class="done DONE"> DONE</span> Reload via AJAX </h4>
-<div class="outline-text-4" id="text-2.11.2">
-
-</div>
-
-</div>
-
-<div id="outline-container-2.11.3" class="outline-4">
-<h4 id="sec-2.11.3"><span class="section-number-4">2.11.3</span> Paginasi </h4>
-<div class="outline-text-4" id="text-2.11.3">
-
-</div>
-
-</div>
-
-<div id="outline-container-2.11.4" class="outline-4">
-<h4 id="sec-2.11.4"><span class="section-number-4">2.11.4</span> Search box </h4>
-<div class="outline-text-4" id="text-2.11.4">
-
-</div>
-</div>
-
-</div>
-
-<div id="outline-container-2.12" class="outline-3">
-<h3 id="sec-2.12"><span class="section-number-3">2.12</span> [11] Pengiriman report data transaksi harian </h3>
-<div class="outline-text-3" id="text-2.12">
-
-<p>Bisa dibuat seamless semacam DropBox, atau by action dengan tombol closing and update to server di akhir sesi
-Fokus ke pengaturan sesi terlebih dahulu
-</p></div>
-</div>
-
-</div>
-
-<div id="outline-container-3" class="outline-2">
-<h2 id="sec-3"><span class="section-number-2">3</span> Cloud Concept of FikrPOS </h2>
-<div class="outline-text-2" id="text-3">
-
-<p>FikrPOS solution is offer with two plans :
+<p>FikrPOS solution is offered with two plans :
 </p><ol>
 <li>
-Personal plan
+Personal Plan
 
 <p>
 For single unit of POS system (maybe a small minimarket with only one unit of installation), but still want to manage their system using a computerized POS system. Consisting of a single PC + printer + barcode scanner. Without the need to connect itself to the internet for a Distribution Control system.
 </p></li>
 <li>
-Cloud plan 
+Cloud Plan 
 
 <p>
 This is the case that we dealing with "Koperasi Penjara", where the system consists of a several branches, each with multiple installation of POS sytem, where all the branches need to be managed by a centralized Distribution Center in the internet (=cloud. Here, the term cloud is interchangeably with internet)
@@ -470,138 +129,170 @@ This is the case that we dealing with "Koperasi Penjara", where the system consi
 </p>
 </div>
 
-<div id="outline-container-3.1" class="outline-3">
-<h3 id="sec-3.1"><span class="section-number-3">3.1</span> Cloud Plan </h3>
-<div class="outline-text-3" id="text-3.1">
+<div id="outline-container-1.1" class="outline-3">
+<h3 id="sec-1.1"><span class="section-number-3">1.1</span> Personal Plan </h3>
+<div class="outline-text-3" id="text-1.1">
 
+<p>Personal Plan is actually just a simplified version of Cloud plan. Actually, whether user install POS client as Personal Plan or as Cloud Plan, they are still using the same application. The different is just that in Personal Plan, they can't use the POS client to get/stored data from/to the cloud. This mean, upgrading a personal plan is as simple as giving them the necessary token to be able to login to the cloud.
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-1.2" class="outline-3">
+<h3 id="sec-1.2"><span class="section-number-3">1.2</span> Cloud Plan </h3>
+<div class="outline-text-3" id="text-1.2">
+
+<p>All the features that we already agreed are here : multiple branches with one single Distribution Centre where all their product, category and daily cashflow is seamlessly stored. But with just one little extra addition : everyone can signup to this DC, and have access to all feature that Kopjar has. That's all there is! I strive to make this solution as sustainable as possible. Meaning, we don't do extra work (or as little as possible) when our user base grown large (Amiin).
+</p>
+<p>
+We really get helped from <a href="http://www.openshift.com">http://www.openshift.com</a>. Alhamdulillah. Without it, I simply can't think of a better way of making a DC system. I know that we previously plan to get ourselves a Windows Based VPS. But it's just too costly and yet, I am not that enthusiast in coding for a Windows Based Server/Web application. Openshift offer a generous workable free plan solution : 1 GB quota. I think we can live with a free plan for our initial launch of the application. Let see our progress, and if we do need an upgrade, we can pay them USD 20/month. I am sure, if we do need to pay them in that sums, this mean our business already running great.
+</p>
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-2" class="outline-2">
+<h2 id="sec-2"><span class="section-number-2">2</span> Pricing </h2>
+<div class="outline-text-2" id="text-2">
+
+<p>One main reason why we should consider a Cloud Based Solution is to get a broad range of user as much as possible and to be able to charge them in monthly/anually bases (with lower price than if they were charge personally). Of course, this thinking should be adjusted to meet your business style. We should discuss this more after we have established a solid solution for Kopjar. As a guide, a Personal Plan should let user pay our product once and for all. While with a Cloud Plan &ndash;as it use server resource&ndash; we should charge them monthly/anually (or maybe initially and then monthly/anually)
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-3" class="outline-2">
+<h2 id="sec-3"><span class="section-number-2">3</span> Cloud Features </h2>
+<div class="outline-text-2" id="text-3">
+
+<p>This list already include what we already agreed upon, with added feature as it's now being constructed as cloud solution. I use this list to carefully implement our DC.
+</p><ol>
+<li>
+Admin of this application will be able to manage their DC using internet enabled devices. The website in <a href="http://fikrposdc-ekowibowo.rhcloud.com">http://fikrposdc-ekowibowo.rhcloud.com</a> is a responsive one. Meaning that it is designed to be run optimally whether we use desktop browser or mobile browser (try opening it with your Android/iOS device). At this current state, I would like to optimize it, as the Carousel feature is taking too much bandwith.
+</li>
+<li>
+In regard of Feature #1, User will be able to get the latest report/chart that show their business performance by just using their Smartphone. This is the point that should encourage user to use our Cloud Plan. I really eager that someday we have our own dedicate Android/iOS application. I am imagining business owner will going to be really happy if they can manage their POS business anywhere.
+</li>
+<li>
+At the current design of the system, I prepare DC to hold this kind of data :
+<ul>
+<li>
+All branches that exist in this system. 
 
 <p>
-User Signup terlebih dahulu dilakukan di cloud, untuk kemudian user bisa mendownload aplikasinya.
-</p></div>
+Branches is entity that allowed to post DailyCashFlow data to the DC. Beneath DC we have POS installation that do the actual POS activities. At our early design, we miss this part. We only think in term of Branches to DC communication. After I think of it thoroughly, we must also stored from which POS installation does the transaction comming from. It will useful or auditing, security, etc. But, it's okay if we designed only branches that have the communication with DC. Because, if we do need every POS installation able to communicate with DC, we can easily register them as Branch.
+</p></li>
+<li>
+All users reside within this POS system, from any branches.
+</li>
+<li>
+DailyCashFlow from all branches. This mean, the actual/detail transaction is still left at Branch/each POS installation. This shall minimize the problem of losing much space in our database.
+</li>
+<li>
+Product catalog having : category and product item. 
+</li>
+<li>
+Stock data. Will stored in the same level of abstraction as DailyCashFlow, that is only summarize its stock_opening and stock_closing (which mean we'll be able to calculate its stock change) dailly.
 
-</div>
+<p>
+I believe those data already enough to start a great POS cloud system, but should you have another idea, just discuss it. 
+</p>
+</li>
+</ul>
+</li>
+<li>
+As we use Openshift, we are relieve from server maintenance complexity. And with the current free plan, we don't have to pay them. Another great benefit
 
-<div id="outline-container-3.2" class="outline-3">
-<h3 id="sec-3.2"><span class="section-number-3">3.2</span> Personal Plan </h3>
-<div class="outline-text-3" id="text-3.2">
+</li>
+<li>
+A free signup! This will allow our use to get a taste of the application / cloud. Currently I never think of securing my desktop application by mean of serial key/activation key. But, I think we must have a client application distributed as a limited function demo/time trial. This will left as added work after our Kopjar solution is completed.
 
-
-</div>
-
-</div>
-
-<div id="outline-container-3.3" class="outline-3">
-<h3 id="sec-3.3"><span class="section-number-3">3.3</span> <span class="todo TODO"> TODO</span> <sup><a class="footref" name="fnr.13.2" href="#fn.13">13</a></sup> Refine Session Manajemen : Make it more user friendly </h3>
-<div class="outline-text-3" id="text-3.3">
-
-
-</div>
-
-<div id="outline-container-3.3.1" class="outline-4">
-<h4 id="sec-3.3.1"><span class="section-number-4">3.3.1</span> <span class="todo TODO"> TODO</span> Review C# code </h4>
-<div class="outline-text-4" id="text-3.3.1">
-
-</div>
-</div>
-
-</div>
-
-<div id="outline-container-3.4" class="outline-3">
-<h3 id="sec-3.4"><span class="section-number-3">3.4</span> [15] Product and category initialization from Cloud </h3>
-<div class="outline-text-3" id="text-3.4">
-
-</div>
+</li>
+</ol>
 </div>
 
 </div>
 
 <div id="outline-container-4" class="outline-2">
-<h2 id="sec-4"><span class="section-number-2">4</span> Minor Things </h2>
+<h2 id="sec-4"><span class="section-number-2">4</span> Coding Task </h2>
 <div class="outline-text-2" id="text-4">
 
 
+<p>
+This is all coding tasks that left to make the final phase of the application complete. I have one important obstacle : I really, really need a hand on the POS Printer. Haven't have time to meet my friend who sold it. At the minimum, I must be able to rent it. Task with TODO is task that currently being working on.
+</p>
 </div>
 
 <div id="outline-container-4.1" class="outline-3">
-<h3 id="sec-4.1"><span class="section-number-3">4.1</span> Select navigation of module </h3>
+<h3 id="sec-4.1"><span class="section-number-3">4.1</span> <span class="todo TODO"> TODO</span> Creating application initialisation scenario with DC communication in mind. Personal plan is skipped at the moment. </h3>
 <div class="outline-text-3" id="text-4.1">
 
 </div>
+
+</div>
+
+<div id="outline-container-4.2" class="outline-3">
+<h3 id="sec-4.2"><span class="section-number-3">4.2</span> Refine Daily Session Manajemen : Make it more user friendly. Currently, it still confusing </h3>
+<div class="outline-text-3" id="text-4.2">
+
+
+</div>
+
+<div id="outline-container-4.2.1" class="outline-4">
+<h4 id="sec-4.2.1"><span class="section-number-4">4.2.1</span> Review C# code </h4>
+<div class="outline-text-4" id="text-4.2.1">
+
 </div>
 
 </div>
 
-<div id="outline-container-5" class="outline-2">
-<h2 id="sec-5"><span class="section-number-2">5</span> Bug Fixing </h2>
-<div class="outline-text-2" id="text-5">
-
-
-</div>
-
-<div id="outline-container-5.1" class="outline-3">
-<h3 id="sec-5.1"><span class="section-number-3">5.1</span> <span class="done DONE"> DONE</span> That jquery.pott.. things </h3>
-<div class="outline-text-3" id="text-5.1">
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+<div id="outline-container-4.2.2" class="outline-4">
+<h4 id="sec-4.2.2"><span class="section-number-4">4.2.2</span> Focus on streamlining the starting/ending of session process </h4>
+<div class="outline-text-4" id="text-4.2.2">
 
 </div>
 </div>
+
 </div>
-<div id="footnotes">
-<h2 class="footnotes">Footnotes: </h2>
-<div id="text-footnotes">
-<p class="footnote"><sup><a class="footnum" name="fn.1" href="#fnr.1">1</a></sup> FOOTNOTE DEFINITION NOT FOUND: 001
-</p>
-<p class="footnote"><sup><a class="footnum" name="fn.2" href="#fnr.2">2</a></sup> FOOTNOTE DEFINITION NOT FOUND: 002
-</p>
-<p class="footnote"><sup><a class="footnum" name="fn.3" href="#fnr.3">3</a></sup> FOOTNOTE DEFINITION NOT FOUND: 005
-</p>
-<p class="footnote"><sup><a class="footnum" name="fn.4" href="#fnr.4">4</a></sup> FOOTNOTE DEFINITION NOT FOUND: 006
-</p>
-<p class="footnote"><sup><a class="footnum" name="fn.5" href="#fnr.5">5</a></sup> FOOTNOTE DEFINITION NOT FOUND: 003
-</p>
-<p class="footnote"><sup><a class="footnum" name="fn.6" href="#fnr.6">6</a></sup> FOOTNOTE DEFINITION NOT FOUND: 004
-</p>
-<p class="footnote"><sup><a class="footnum" name="fn.7" href="#fnr.7">7</a></sup> FOOTNOTE DEFINITION NOT FOUND: 007
-</p>
-<p class="footnote"><sup><a class="footnum" name="fn.8" href="#fnr.8">8</a></sup> FOOTNOTE DEFINITION NOT FOUND: 008
-</p>
-<p class="footnote"><sup><a class="footnum" name="fn.9" href="#fnr.9">9</a></sup> FOOTNOTE DEFINITION NOT FOUND: 009
-</p>
-<p class="footnote"><sup><a class="footnum" name="fn.10" href="#fnr.10">10</a></sup> FOOTNOTE DEFINITION NOT FOUND: 010
-</p>
-<p class="footnote"><sup><a class="footnum" name="fn.11" href="#fnr.11">11</a></sup> FOOTNOTE DEFINITION NOT FOUND: 012
-</p>
-<p class="footnote"><sup><a class="footnum" name="fn.12" href="#fnr.12">12</a></sup> FOOTNOTE DEFINITION NOT FOUND: 015
-</p>
-<p class="footnote"><sup><a class="footnum" name="fn.13" href="#fnr.13">13</a></sup> FOOTNOTE DEFINITION NOT FOUND: 013
-</p>
-<p class="footnote"><sup><a class="footnum" name="fn.14" href="#fnr.14">14</a></sup> FOOTNOTE DEFINITION NOT FOUND: 011
-</p>
-<p class="footnote"><sup><a class="footnum" name="fn.15" href="#fnr.15">15</a></sup> FOOTNOTE DEFINITION NOT FOUND: 014
-</p>
+
+<div id="outline-container-4.3" class="outline-3">
+<h3 id="sec-4.3"><span class="section-number-3">4.3</span> Product and category initialization from Cloud </h3>
+<div class="outline-text-3" id="text-4.3">
+
+</div>
+
+</div>
+
+<div id="outline-container-4.4" class="outline-3">
+<h3 id="sec-4.4"><span class="section-number-3">4.4</span> Branch, User and POS instance registering to the Cloud </h3>
+<div class="outline-text-3" id="text-4.4">
+
+</div>
+
+</div>
+
+<div id="outline-container-4.5" class="outline-3">
+<h3 id="sec-4.5"><span class="section-number-3">4.5</span> Refine Printing feature </h3>
+<div class="outline-text-3" id="text-4.5">
+
+</div>
+
+</div>
+
+<div id="outline-container-4.6" class="outline-3">
+<h3 id="sec-4.6"><span class="section-number-3">4.6</span> FINAL : Test overall functionality of the system </h3>
+<div class="outline-text-3" id="text-4.6">
+
+</div>
 </div>
 </div>
 <div id="postamble">
-<p class="author"> Author: swdev
+<p class="author"> Author: Eko Wibowo
 <a href="mailto:swdev@swdev-platform">&lt;swdev@swdev-platform&gt;</a>
 </p>
-<p class="date"> Date: 2013-10-11 16:54:49 WIT</p>
+<p class="date"> Date: 2013-10-12 00:25:25 WIT</p>
 <p class="creator">HTML generated by org-mode 6.33x in emacs 23</p>
 </div>
 </div>
