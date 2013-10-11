@@ -1,3 +1,4 @@
+
 FikrPOS : An Elegant Cloud Based Point of Sales Solution for You
 * Technologies
 ** Server Python on Redhat Openshift
@@ -59,8 +60,14 @@ Komponen
 ** [012] Pengiriman report data transaksi harian
    Bisa dibuat seamless semacam DropBox, atau by action dengan tombol closing and update to server di akhir sesi
    Fokus ke pengaturan sesi terlebih dahulu
-* Cloud Concept
-  Solusi ditawarkan dalam dua plan : personal plan (bayangkan satu unit POS) dan cloud plan (berfungsi sebagai Data Center/Distribution Center). Kapanpun dari personal plan, selalu bisa diupgrade ke cloud plan. Ini untuk memperluas pasar, dimana user tidak/belum memiliki koneksi internet. Atau memang belum tertarik untuk menggunakan solusi Cloud yang mungkin dirasanya terlalu besar/berlebihan untuk kebutuhannya saat ini.
+* Cloud Concept of FikrPOS
+  FikrPOS solution is offer with two plans :
+  1. Personal plan
+     For single unit of POS system (maybe a small minimarket with only one unit of installation), but still want to manage their system using a computerized POS system. Consisting of a single PC + printer + barcode scanner. Without the need to connect itself to the internet for a Distribution Control system.
+  2. Cloud plan 
+     This is the case that we dealing with "Koperasi Penjara", where the system consists of a several branches, each with multiple installation of POS sytem, where all the branches need to be managed by a centralized Distribution Center in the internet (=cloud. Here, the term cloud is interchangeably with internet)
+
+     Anytime user can upgrade themself from Personal Plan to Cloud Plan. I create this arrangement, so that we can target a larger audience of user.
 ** Cloud Plan
    .:. Ini merupakan solusi skala besar / mobility, dengan banyak branches yang membutuhkan manajemen dari suatu Distribution Center terpusat
    User Signup terlebih dahulu dilakukan di cloud, untuk kemudian user bisa mendownload aplikasinya.
