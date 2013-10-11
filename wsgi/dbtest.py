@@ -120,7 +120,6 @@ class DbTest(unittest.TestCase):
             cash_end_of_day = 666000
             )
         
-
         assert day3.id == day3_double_solved.id
 
         assert day3_double_solved.cash_end_of_day == 666000

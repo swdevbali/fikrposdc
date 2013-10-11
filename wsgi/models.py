@@ -113,7 +113,7 @@ class DailyCashFlow(db.Model):
             data.cash_end_of_day = cash_end_of_day
             data.calculateIncome()
         else:
-            data = models.DailyCashFlow(day=day, cash_start_of_day = cash_start_of_day, cash_end_of_day =  cash_end_of_day)
+            data = DailyCashFlow(day=day, cash_start_of_day = cash_start_of_day, cash_end_of_day =  cash_end_of_day)
             branch.dailyCashFlow.append(data)
 
         db.session.commit()

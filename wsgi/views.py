@@ -358,15 +358,12 @@ class WebApi(FlaskView):
         cash_end_of_day = int(data.get('cash_end_of_day')) if data.get('cash_end_of_day') else 0
         income = cash_end_of_day - cash_start_of_day
 
-
-
-        '''NEXT : load existing dailyCashFlow'''
-        models.DailyCashFlow.addOrUpdate(branch, day=day, cash_start_of_day = cash_start_of_day, cash_end_of_day =  cash_end_of_day)
-#        dailyCashFlow = models.DailyCashFlow(day=day, cash_start_of_day = cash_start_of_day, cash_end_of_day =  cash_end_of_day)
-#        branch.dailyCashFlow.append(dailyCashFlow)
-#        db.session.commit()
-
-        '''NEXT : maybe another validation, or just one little thing to return the ID to the caller'''
+        dailyCashFlow = models.DailyCashFlow.addOrUpdate(
+            branch = branch, 
+            day = day,
+            cash_start_of_day = cash_start_of_day,
+            cash_end_of_day = cash_end_of_day
+            )
 
         result['result'] = True
         result['message'] = string.join(['Daily cashflow saved successfully with ID=#', `dailyCashFlow.id`])
