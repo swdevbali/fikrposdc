@@ -112,19 +112,18 @@ class DbTest(unittest.TestCase):
         db.session.rollback()
 
         '''solve uniquness by testing first for existing report on dailycashflow for the branch, and update accordingly'''
-        day3_double_solved = models.DailyCashFlow(day='2013-01-03',cash_start_of_day = 0, cash_end_of_day = 666000)
-        check_day = models.DailyCashFlow.query.filter_by(branch_id = branch2.id, day = day3_double_solved.day).first()
-        if check_day is not None:
-            check_day.cash_start_of_day = day3_double_solved.cash_start_of_day 
-            check_day.cash_end_of_day = day3_double_solved.cash_end_of_day
-            check_day.calculateIncome()
-            db.session.commit()
-        else:
-            branch2.dailyCashFlow.append(day3_double_solved) #will not get executed
+        
+        day3_double_solved = models.DailyCashFlow.addOrUpdate(
+            branch = branch2, 
+            day='2013-01-03',
+            cash_start_of_day = 0,
+            cash_end_of_day = 666000
+            )
+        
 
-        assert day3_double_solved.id is None
+        assert day3.id == day3_double_solved.id
 
-        assert check_day.cash_end_of_day == 666000
+        assert day3_double_solved.cash_end_of_day == 666000
 
 
         
