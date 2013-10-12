@@ -1,1 +1,28 @@
-Bismillah
+#+TITLE: FikrPOS - Application Workflow - How the application works!
+#+AUTHOR: Eko Wibowo
+
+This document list all user case scenario existed in the application
+* Downloading and Installation of The Application
+  Precondition : -
+  Actions :
+  1. User open our site=>signup first=>Download. Our consumer (not yet a customer, cause (s)he not yet paid).
+     Because of this, we already got their company info.
+  2. User Install the downloaded application. When installing it, the application must ask first his credential (username & password). This will make a great security layer of our application. We can also dealt with trial/free plan using this technique. Only for installation purpose our application need internet connection. POS unit within  branches will be setup differently, as the first to setup already registered in our cloud system.
+  
+  Post condition :
+  1. User and his/her company already signed up to our cloud system
+  2. For free/personal signup, branches and users module is not available
+  
+* Application initialisation of Personal Plan
+  Pass
+* Application initialisation of Cloud Plan (Kopjar)
+  Precondition : 
+  1. User and company already signed up to the cloud
+  2. User must at least setup one branch
+  3. Optionally, user may already add another users and another branches
+  4. Optionally, user may already add product categories and product items
+
+  Actions :
+  1. First user installation will be installing POS unit which will act as admin unit for an entire single branch.
+  2. System authenticate this POS installation as a Cloud Plan, by looking at its credentials. Because of that, subsequent first time wizard will be tailored for a cloud system plan.
+  3. NEXT
