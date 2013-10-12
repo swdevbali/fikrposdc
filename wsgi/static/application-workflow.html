@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+               "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+lang="en" xml:lang="en">
+<head>
+<title>FikrPOS - Application Workflow - How the application works!</title>
+<meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1"/>
+<meta name="generator" content="Org-mode"/>
+<meta name="generated" content="2013-10-12 09:36:56 WIT"/>
+<meta name="author" content="Eko Wibowo"/>
+<meta name="description" content=""/>
+<meta name="keywords" content=""/>
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  html { font-family: Times, serif; font-size: 12pt; }
+  .title  { text-align: center; }
+  .todo   { color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #add8e6; font-weight:normal }
+  .target { }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  p.verse { margin-left: 3% }
+  pre {
+	border: 1pt solid #AEBDCC;
+	background-color: #F3F5F7;
+	padding: 5pt;
+	font-family: courier, monospace;
+        font-size: 90%;
+        overflow:auto;
+  }
+  table { border-collapse: collapse; }
+  td, th { vertical-align: top; }
+  dt { font-weight: bold; }
+  div.figure { padding: 0.5em; }
+  div.figure p { text-align: center; }
+  .linenr { font-size:smaller }
+  .code-highlighted {background-color:#ffff00;}
+  .org-info-js_info-navigation { border-style:none; }
+  #org-info-js_console-label { font-size:10px; font-weight:bold;
+                               white-space:nowrap; }
+  .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
+                                 font-weight:bold; }
+  /*]]>*/-->
+</style>
+<script type="text/javascript">
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+
+<h1 class="title">FikrPOS - Application Workflow - How the application works!</h1>
+
+<p>This document list all user case scenario existed in the application
+</p>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">1 Downloading and Installation of The Application </a></li>
+<li><a href="#sec-2">2 Application initialisation of Personal Plan </a></li>
+<li><a href="#sec-3">3 Application initialisation of Cloud Plan (Kopjar) </a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-1" class="outline-2">
+<h2 id="sec-1"><span class="section-number-2">1</span> Downloading and Installation of The Application </h2>
+<div class="outline-text-2" id="text-1">
+
+<p>Precondition : -
+Actions :
+</p><ol>
+<li>
+User open our site=&gt;signup first=&gt;Download. Our consumer (not yet a customer, cause (s)he not yet paid).
+Because of this, we already got their company info.
+</li>
+<li>
+User Install the downloaded application. When installing it, the application must ask first his credential (username &amp; password). This will make a great security layer of our application. We can also dealt with trial/free plan using this technique. Only for installation purpose our application need internet connection. POS unit within  branches will be setup differently, as the first to setup already registered in our cloud system.
+
+</li>
+</ol>
+
+<p>Post condition :
+</p><ol>
+<li>
+User and his/her company already signed up to our cloud system
+</li>
+<li>
+For free/personal signup, branches and users module is not available
+
+</li>
+</ol>
+</div>
+
+</div>
+
+<div id="outline-container-2" class="outline-2">
+<h2 id="sec-2"><span class="section-number-2">2</span> Application initialisation of Personal Plan </h2>
+<div class="outline-text-2" id="text-2">
+
+<p>Pass
+</p></div>
+
+</div>
+
+<div id="outline-container-3" class="outline-2">
+<h2 id="sec-3"><span class="section-number-2">3</span> Application initialisation of Cloud Plan (Kopjar) </h2>
+<div class="outline-text-2" id="text-3">
+
+<p>Precondition : 
+</p><ol>
+<li>
+User and company already signed up to the cloud
+</li>
+<li>
+User must at least setup one branch
+</li>
+<li>
+Optionally, user may already add another users and another branches
+</li>
+<li>
+Optionally, user may already add product categories and product items
+
+</li>
+</ol>
+
+<p>Actions :
+</p><ol>
+<li>
+First user installation will be installing POS unit which will act as admin unit for an entire single branch.
+</li>
+<li>
+System authenticate this POS installation as a Cloud Plan, by looking at its credentials. Because of that, subsequent first time wizard will be tailored for a cloud system plan.
+</li>
+<li>
+NEXT
+</li>
+</ol>
+</div>
+</div>
+<div id="postamble">
+<p class="author"> Author: Eko Wibowo
+<a href="mailto:swdev@swdev-platform">&lt;swdev@swdev-platform&gt;</a>
+</p>
+<p class="date"> Date: 2013-10-12 09:36:56 WIT</p>
+<p class="creator">HTML generated by org-mode 6.33x in emacs 23</p>
+</div>
+</div>
+</body>
+</html>
