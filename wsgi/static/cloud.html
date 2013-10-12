@@ -7,7 +7,7 @@ lang="en" xml:lang="en">
 <title>FikrPOS - An Elegant POS Cloud Based Solution for You</title>
 <meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2013-10-12 09:37:13 WIT"/>
+<meta name="generated" content="2013-10-12 12:32:54 WIT"/>
 <meta name="author" content="Eko Wibowo"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -72,6 +72,9 @@ lang="en" xml:lang="en">
 
 <h1 class="title">FikrPOS - An Elegant POS Cloud Based Solution for You</h1>
 
+<p>This document consisted of high level view of what is cloud / Software as a service in this newly built FikrPOS. Click <a href="application-workflow.html">application-workflow</a> for document that related to workflow of our application. Click <a href="todos.html">todos</a> for all task that planned, being work on and already done to complete this application.
+</p>
+
 
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
@@ -85,21 +88,6 @@ lang="en" xml:lang="en">
 </li>
 <li><a href="#sec-2">2 Pricing </a></li>
 <li><a href="#sec-3">3 Cloud Features </a></li>
-<li><a href="#sec-4">4 Coding Task </a>
-<ul>
-<li><a href="#sec-4.1">4.1 Creating application initialisation scenario with DC communication in mind. Personal plan is skipped at the moment. </a></li>
-<li><a href="#sec-4.2">4.2 Refine Daily Session Manajemen : Make it more user friendly. Currently, it still confusing </a>
-<ul>
-<li><a href="#sec-4.2.1">4.2.1 Review C# code </a></li>
-<li><a href="#sec-4.2.2">4.2.2 Focus on streamlining the starting/ending of session process </a></li>
-</ul>
-</li>
-<li><a href="#sec-4.3">4.3 Product and category initialization from Cloud </a></li>
-<li><a href="#sec-4.4">4.4 Branch, User and POS instance registering to the Cloud </a></li>
-<li><a href="#sec-4.5">4.5 Refine Printing feature </a></li>
-<li><a href="#sec-4.6">4.6 FINAL : Test overall functionality of the system </a></li>
-</ul>
-</li>
 </ul>
 </div>
 </div>
@@ -209,95 +197,16 @@ As we use Openshift, we are relieve from server maintenance complexity. And with
 <li>
 A free signup! This will allow our use to get a taste of the application / cloud. Currently I never think of securing my desktop application by mean of serial key/activation key. But, I think we must have a client application distributed as a limited function demo/time trial. This will left as added work after our Kopjar solution is completed.
 
+
 </li>
 </ol>
-</div>
-
-</div>
-
-<div id="outline-container-4" class="outline-2">
-<h2 id="sec-4"><span class="section-number-2">4</span> Coding Task </h2>
-<div class="outline-text-2" id="text-4">
-
-
-<p>
-This is all coding tasks that left to make the final phase of the application complete. I have one important obstacle : I really, really need a hand on the POS Printer. Haven't have time to meet my friend who sold it. At the minimum, I must be able to rent it. Task with TODO is task that currently being working on.
-</p>
-<p>
-I've omitted of creating a document on the workflow of the Application. This is not Good.
-So, this is the link to our <a href="application-workflow.html">application-workflow</a>, which document workflow of our application. I use this to be able to add cloud workflow to our existing application workflow.
-</p>
-
-</div>
-
-<div id="outline-container-4.1" class="outline-3">
-<h3 id="sec-4.1"><span class="section-number-3">4.1</span> <span class="todo TODO"> TODO</span> Creating application initialisation scenario with DC communication in mind. Personal plan is skipped at the moment. </h3>
-<div class="outline-text-3" id="text-4.1">
-
-</div>
-
-</div>
-
-<div id="outline-container-4.2" class="outline-3">
-<h3 id="sec-4.2"><span class="section-number-3">4.2</span> Refine Daily Session Manajemen : Make it more user friendly. Currently, it still confusing </h3>
-<div class="outline-text-3" id="text-4.2">
-
-
-</div>
-
-<div id="outline-container-4.2.1" class="outline-4">
-<h4 id="sec-4.2.1"><span class="section-number-4">4.2.1</span> Review C# code </h4>
-<div class="outline-text-4" id="text-4.2.1">
-
-</div>
-
-</div>
-
-<div id="outline-container-4.2.2" class="outline-4">
-<h4 id="sec-4.2.2"><span class="section-number-4">4.2.2</span> Focus on streamlining the starting/ending of session process </h4>
-<div class="outline-text-4" id="text-4.2.2">
-
-</div>
-</div>
-
-</div>
-
-<div id="outline-container-4.3" class="outline-3">
-<h3 id="sec-4.3"><span class="section-number-3">4.3</span> Product and category initialization from Cloud </h3>
-<div class="outline-text-3" id="text-4.3">
-
-</div>
-
-</div>
-
-<div id="outline-container-4.4" class="outline-3">
-<h3 id="sec-4.4"><span class="section-number-3">4.4</span> Branch, User and POS instance registering to the Cloud </h3>
-<div class="outline-text-3" id="text-4.4">
-
-</div>
-
-</div>
-
-<div id="outline-container-4.5" class="outline-3">
-<h3 id="sec-4.5"><span class="section-number-3">4.5</span> Refine Printing feature </h3>
-<div class="outline-text-3" id="text-4.5">
-
-</div>
-
-</div>
-
-<div id="outline-container-4.6" class="outline-3">
-<h3 id="sec-4.6"><span class="section-number-3">4.6</span> FINAL : Test overall functionality of the system </h3>
-<div class="outline-text-3" id="text-4.6">
-
-</div>
 </div>
 </div>
 <div id="postamble">
 <p class="author"> Author: Eko Wibowo
 <a href="mailto:swdev@swdev-platform">&lt;swdev@swdev-platform&gt;</a>
 </p>
-<p class="date"> Date: 2013-10-12 09:37:13 WIT</p>
+<p class="date"> Date: 2013-10-12 12:32:54 WIT</p>
 <p class="creator">HTML generated by org-mode 6.33x in emacs 23</p>
 </div>
 </div>

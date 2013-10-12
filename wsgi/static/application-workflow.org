@@ -4,6 +4,7 @@
 This document list all user case scenario existed in the application
 * Downloading and Installation of The Application
   Precondition : -
+
   Actions :
   1. User open our site=>signup first=>Download. Our consumer (not yet a customer, cause (s)he not yet paid).
      Because of this, we already got their company info.
@@ -25,4 +26,4 @@ This document list all user case scenario existed in the application
   Actions :
   1. First user installation will be installing POS unit which will act as admin unit for an entire single branch.
   2. System authenticate this POS installation as a Cloud Plan, by looking at its credentials. Because of that, subsequent first time wizard will be tailored for a cloud system plan.
-  3. NEXT
+  3. Initialisation may involved firstime registering to the cloud. Other words, I will develop an API to do the registration from the desktop installation. 

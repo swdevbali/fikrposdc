@@ -1,5 +1,9 @@
 #+TITLE: FikrPOS - An Elegant POS Cloud Based Solution for You
 #+AUTHOR: Eko Wibowo
+
+This document consisted of high level view of what is cloud / Software as a service in this newly built FikrPOS. Click file:application-workflow.org for document that related to workflow of our application. Click file:todos.org for all task that planned, being work on and already done to complete this application.
+
+
 * Cloud Concept in FikrPOS
   FikrPOS solution is offered with two plans :
   1. Personal Plan
@@ -40,18 +44,4 @@
 
   5. A free signup! This will allow our use to get a taste of the application / cloud. Currently I never think of securing my desktop application by mean of serial key/activation key. But, I think we must have a client application distributed as a limited function demo/time trial. This will left as added work after our Kopjar solution is completed.
 
-* Coding Task
 
-This is all coding tasks that left to make the final phase of the application complete. I have one important obstacle : I really, really need a hand on the POS Printer. Haven't have time to meet my friend who sold it. At the minimum, I must be able to rent it. Task with TODO is task that currently being working on.
-
-I've omitted of creating a document on the workflow of the Application. This is not Good.
-So, this is the link to our file:application-workflow.org, which document workflow of our application. I use this to be able to add cloud workflow to our existing application workflow.
-
-** TODO Creating application initialisation scenario with DC communication in mind. Personal plan is skipped at the moment.
-** Refine Daily Session Manajemen : Make it more user friendly. Currently, it still confusing
-*** Review C# code
-*** Focus on streamlining the starting/ending of session process
-** Product and category initialization from Cloud
-** Branch, User and POS instance registering to the Cloud
-** Refine Printing feature
-** FINAL : Test overall functionality of the system

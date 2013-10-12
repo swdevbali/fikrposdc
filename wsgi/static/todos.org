@@ -1,0 +1,11 @@
+This is all coding tasks that left to make the final phase of the application complete. I have one important obstacle : I really, really need a hand on the POS Printer. Haven't have time to meet my friend who sold it. At the minimum, I must be able to rent it. Task with TODO is task that currently being working on.
+
+
+* Creating application initialisation scenario with DC communication in mind. Personal plan is skipped at the moment.
+* Refine Daily Session Manajemen : Make it more user friendly. Currently, it still confusing
+** Review C# code
+** Focus on streamlining the starting/ending of session process
+* Product and category initialization from Cloud
+* Branch, User and POS instance registering to the Cloud
+* Refine Printing feature
+* FINAL : Review overall functionality of the system
