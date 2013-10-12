@@ -1,6 +1,8 @@
 This is all coding tasks that left to make the final phase of the application complete. I have one important obstacle : I really, really need a hand on the POS Printer. Haven't have time to meet my friend who sold it. At the minimum, I must be able to rent it. Task with TODO is task that currently being working on.
 
-
+* Create API for registering of user from desktop client application
+  I also need this to easily do unit test of the application.
+** Add HTTP Basic Authentication in RESTful API 
 * Creating application initialisation scenario with DC communication in mind. Personal plan is skipped at the moment.
 * Refine Daily Session Manajemen : Make it more user friendly. Currently, it still confusing
 ** Review C# code
