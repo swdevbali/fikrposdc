@@ -8,11 +8,17 @@ This document describe how a personal plan can be upgraded to cloud plan
 ** DONE Setup local Windows Python env, with a Flask framework
 * Prerequisites
   Download and installing the app
-* DONE First Time Running
+* TODOs
+** DONE First Time Running
   Application must check registry setting. If it fresh, start with new comer wizard. If it isn't, directly let user work
   C# Application main object is Program.cs, from there it will eventually open StartupForm.cs if appropriate, which eventually, will open form based on user role : admin/operator.
   Tricky startup code should be get rid of
-** TODO Registering to Cloud
-   We do this only on the branch : sign in/register if hasn't been done yet
+** Registering to the Cloud via desktop 
+   We do this only on the branch : signin/register if it hasn't been done yet
+   For Kopjar, we skip this part
+** TODO Directly on testing uploading of the dailycashflow
+*** TODO Designing a new dashboard for Admin. Status of cloud connection will be done here
+    Okay, it will be done in a unit test, while the settings value will be saved in Settings form
+   
    
    
