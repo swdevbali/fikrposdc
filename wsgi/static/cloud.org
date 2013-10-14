@@ -45,3 +45,6 @@ This document consisted of high level view of what is cloud / Software as a serv
   5. A free signup! This will allow our use to get a taste of the application / cloud. Currently I never think of securing my desktop application by mean of serial key/activation key. But, I think we must have a client application distributed as a limited function demo/time trial. This will left as added work after our Kopjar solution is completed.
 
 
+
+* Easier Installation
+  FikrPOS now easier to setup with the use of embedded SQLITE3 database. From user point of view, it just works! No need another IT tech support to help user install this feature.

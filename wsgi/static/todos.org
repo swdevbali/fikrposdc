@@ -1,8 +1,20 @@
-This is all coding tasks that left to make the final phase of the application complete. I have one important obstacle : I really, really need a hand on the POS Printer. Haven't have time to meet my friend who sold it. At the minimum, I must be able to rent it. Task with TODO is task that currently being working on.
+These are all coding tasks that left to make the final phase of the application complete. 
 
+I have one important obstacle : I really, really need a hand on the POS Printer. Haven't have time to meet my friend who sold it. At the minimum, I must be able to rent it. Task with TODO is task that currently being working on.
+
+* A Brand New Design : Easier Installation by using SQLite3
+  1. Thinking of Personal Plan, an SQLite3 will be used.
+  2. Will be perfect if a Python + SQLAlchemy + Flask is running as a hidden server behind every POS installation that acted as a Branch or Personal Plan. This hidden server may seen as Windows Service (yes yes yes!), with system tray as monitoring control (may or may not be needed, as I want an obstrusive application as much as possible.
+  3. This way, a personal plan is actually an admin branch installation : can be extended to hook another POS unit that will accessed the same data.
+  4. If its going to be a personal plan, maybe a simple C# + SQLite is okay. If its going to be a branch, a C# + SQLite3 + PythonFlaskSQLALchemy may be needed. Got to research more on this
 * Create API for registering of user from desktop client application
-  I also need this to easily do unit test of the application.
-** Add HTTP Basic Authentication in RESTful API 
+  We must add HTTP Basic Authentication in RESTful API 
+  I also need this to easily do unit test of the client C# desktop application.
+  
+** TODO Register
+   Doing it from C#
+   
+** Sign In
 * Creating application initialisation scenario with DC communication in mind. Personal plan is skipped at the moment.
 * Refine Daily Session Manajemen : Make it more user friendly. Currently, it still confusing
 ** Review C# code

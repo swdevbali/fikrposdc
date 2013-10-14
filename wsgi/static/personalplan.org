@@ -1,0 +1,18 @@
+This document describe how a personal plan can be upgraded to cloud plan
+
+* Architecture
+  We have options :
+  1. Simplest option should be to stay with the current architecture,and add only DailyCashFlow saved to the cloud as end of day closing procedure. OPTED TO USE THIS
+  2. C# accessing a local SQLite data. Or a .NET ORM Framework that allow the use of SQLITE/SQLExpress
+  3. Another option should be C# accessing Python Flask server, so that it can be easily scaled as branch server
+** DONE Setup local Windows Python env, with a Flask framework
+* Prerequisites
+  Download and installing the app
+* DONE First Time Running
+  Application must check registry setting. If it fresh, start with new comer wizard. If it isn't, directly let user work
+  C# Application main object is Program.cs, from there it will eventually open StartupForm.cs if appropriate, which eventually, will open form based on user role : admin/operator.
+  Tricky startup code should be get rid of
+** TODO Registering to Cloud
+   We do this only on the branch : sign in/register if hasn't been done yet
+   
+   
