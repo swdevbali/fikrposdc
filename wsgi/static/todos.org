@@ -2,18 +2,24 @@ These are all coding tasks that left to make the final phase of the application 
 
 I have one important obstacle : I really, really need a hand on the POS Printer. Haven't have time to meet my friend who sold it. At the minimum, I must be able to rent it. Task with TODO is task that currently being working on.
 
-* A Brand New Design : Easier Installation by using SQLite3
+* Personal Plan
+** DONE Setup local Windows Python env, with a Flask framework
+* A Brand New Design : Easier Installation by using SQLite3 : ONLY FOR PERSONAL PLAN
   1. Thinking of Personal Plan, an SQLite3 will be used.
   2. Will be perfect if a Python + SQLAlchemy + Flask is running as a hidden server behind every POS installation that acted as a Branch or Personal Plan. This hidden server may seen as Windows Service (yes yes yes!), with system tray as monitoring control (may or may not be needed, as I want an obstrusive application as much as possible.
   3. This way, a personal plan is actually an admin branch installation : can be extended to hook another POS unit that will accessed the same data.
   4. If its going to be a personal plan, maybe a simple C# + SQLite is okay. If its going to be a branch, a C# + SQLite3 + PythonFlaskSQLALchemy may be needed. Got to research more on this
-* Create API for registering of user from desktop client application
+* DONE First Time Running
+  Application must check registry setting. If it fresh, start with new comer wizard. If it isn't, directly let user work
+  C# Application main object is Program.cs, from there it will eventually open StartupForm.cs if appropriate, which eventually, will open form based on user role : admin/operator.
+  Tricky startup code should be get rid of
+* TODO Create API for registering of user from desktop client application
   We must add HTTP Basic Authentication in RESTful API 
   I also need this to easily do unit test of the client C# desktop application.
   
-** TODO Register
-   Doing it from C#
-   
+** TODO Check integration status 
+** Register
+   Doing it from C#   
 ** Sign In
 * Creating application initialisation scenario with DC communication in mind. Personal plan is skipped at the moment.
 * Refine Daily Session Manajemen : Make it more user friendly. Currently, it still confusing
@@ -23,3 +29,19 @@ I have one important obstacle : I really, really need a hand on the POS Printer.
 * Branch, User and POS instance registering to the Cloud
 * Refine Printing feature
 * FINAL : Review overall functionality of the system
+* [004] Security of API
+* Verifikasi ID dari Client ke Server
+ Klien mengirimkan username dan password via json ke server herokuapp
+ Server menerima dan mencocokkannya dengan database, mengirimkan json true/false jika benar.
+ URL /api/log/in/{username}/{encyrpted password}
+* [011] Sempurnakan CRUD paginated table
+** DONE Menggunakan ajax u/ penghapusan data
+** DONE Reload via AJAX
+** Paginasi
+** Search box
+** [012] Pengiriman report data transaksi harian
+   Bisa dibuat seamless semacam DropBox, atau by action dengan tombol closing and update to server di akhir sesi
+   Fokus ke pengaturan sesi terlebih dahulu
+
+
+* Select navigation of module

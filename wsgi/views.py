@@ -303,17 +303,17 @@ class WebApi(FlaskView):
         that's all! 
         After that, refine with adding security username+password and token
 
-{ 
- "branch_name" : "Kopjar",
- "branch_token" : "empty token",
- "company_token": "qwerty-82827272",
-  "data" :
-   {
-       "day" : "2013-02-01",
-       "cash_start_of_day": "100000",
-       "cash_end_of_day" : "1500000"
-   } 
-}
+        { 
+        "branch_name" : "Kopjar",
+        "branch_token" : "empty token",
+        "company_token": "qwerty-82827272",
+        "data" :
+        {
+        "day" : "2013-02-01",
+        "cash_start_of_day": "100000",
+        "cash_end_of_day" : "1500000"
+        } 
+        } 
         '''
         result = {}
 

@@ -4,8 +4,7 @@
 This document consisted of high level view of what is cloud / Software as a service in this newly built FikrPOS. Click file:application-workflow.org for document that related to workflow of our application. Click file:todos.org for all task that planned, being work on and already done to complete this application.
 
 
-* Cloud Concept in FikrPOS
-  FikrPOS solution is offered with two plans :
+FikrPOS solution is offered with two plans :
   1. Personal Plan
 
      For single unit of POS system (maybe a small minimarket with only one unit of installation), but still want to manage their system using a computerized POS system. Consisting of a single PC + printer + barcode scanner. Without the need to connect itself to the internet for a Distribution Control system.
@@ -14,18 +13,30 @@ This document consisted of high level view of what is cloud / Software as a serv
      This is the case that we dealing with "Koperasi Penjara", where the system consists of a several branches, each with multiple installation of POS sytem, where all the branches need to be managed by a centralized Distribution Center in the internet (=cloud. Here, the term cloud is interchangeably with internet)
 
   Anytime user can upgrade themself from Personal Plan to Cloud Plan. I create this arrrangement, to target a larger audience : those who currently didn't want/know the benefit of having their POS data backed up to the cloud. In the process, we can try patiently to persuade them to upgrade to Cloud plan.
-** Personal Plan
-   Personal Plan is actually just a simplified version of Cloud plan. Actually, whether user install POS client as Personal Plan or as Cloud Plan, they are still using the same application. The different is just that in Personal Plan, they can't use the POS client to get/stored data from/to the cloud. This mean, upgrading a personal plan is as simple as giving them the necessary token to be able to login to the cloud.
 
-** Cloud Plan
+* Technologies
+** Server Python on Redhat Openshift
+Komponen
+   Menerima kiriman rekap transaksi harian
+   Menyediakan data terpusat dari laporan transaksi semua branches.  
+   Menampilkan laporan secara grafik yang informatif
+   Menggunakan Pyramid + PostgreSQL di Herokuapp
+   Berkomunikasi ke klien via JSON
+** Klien C# Desktop run on Windows
+  Mengirimkan data transaksi ke pusat
+  Berkomunikasi ke server via JSON
+
+* Cloud Plan
    All the features that we already agreed are here : multiple branches with one single Distribution Centre where all their product, category and daily cashflow is seamlessly stored. But with just one little extra addition : everyone can signup to this DC, and have access to all feature that Kopjar has. That's all there is! I strive to make this solution as sustainable as possible. Meaning, we don't do extra work (or as little as possible) when our user base grown large (Amiin).
 
    We really get helped from http://www.openshift.com. Alhamdulillah. Without it, I simply can't think of a better way of making a DC system. I know that we previously plan to get ourselves a Windows Based VPS. But it's just too costly and yet, I am not that enthusiast in coding for a Windows Based Server/Web application. Openshift offer a generous workable free plan solution : 1 GB quota. I think we can live with a free plan for our initial launch of the application. Let see our progress, and if we do need an upgrade, we can pay them USD 20/month. I am sure, if we do need to pay them in that sums, this mean our business already running great.
 
-* Pricing
+** Architecture
+   Using Openshift with Python Flask + SQLAlchemy + PostgreSQL, communication is done using RES
+** Pricing
   One main reason why we should consider a Cloud Based Solution is to get a broad range of user as much as possible and to be able to charge them in monthly/anually bases (with lower price than if they were charge personally). Of course, this thinking should be adjusted to meet your business style. We should discuss this more after we have established a solid solution for Kopjar. As a guide, a Personal Plan should let user pay our product once and for all. While with a Cloud Plan --as it use server resource-- we should charge them monthly/anually (or maybe initially and then monthly/anually)
 
-* Cloud Features
+** Features
   This list already include what we already agreed upon, with added feature as it's now being constructed as cloud solution. I use this list to carefully implement our DC.
   1. Admin of this application will be able to manage their DC using internet enabled devices. The website in http://fikrposdc-ekowibowo.rhcloud.com is a responsive one. Meaning that it is designed to be run optimally whether we use desktop browser or mobile browser (try opening it with your Android/iOS device). At this current state, I would like to optimize it, as the Carousel feature is taking too much bandwith.
   2. In regard of Feature #1, User will be able to get the latest report/chart that show their business performance by just using their Smartphone. This is the point that should encourage user to use our Cloud Plan. I really eager that someday we have our own dedicate Android/iOS application. I am imagining business owner will going to be really happy if they can manage their POS business anywhere.
@@ -45,6 +56,23 @@ This document consisted of high level view of what is cloud / Software as a serv
   5. A free signup! This will allow our use to get a taste of the application / cloud. Currently I never think of securing my desktop application by mean of serial key/activation key. But, I think we must have a client application distributed as a limited function demo/time trial. This will left as added work after our Kopjar solution is completed.
 
 
+* Personal Plan
+   Personal Plan is actually just a simplified version of Cloud plan. Actually, whether user install POS client as Personal Plan or as Cloud Plan, they are still using the same application. The different is just that in Personal Plan, they can't use the POS client to get/stored data from/to the cloud. This mean, upgrading a personal plan is as simple as giving them the necessary token to be able to login to the cloud.
 
-* Easier Installation
-  FikrPOS now easier to setup with the use of embedded SQLITE3 database. From user point of view, it just works! No need another IT tech support to help user install this feature.
+** Architecture
+  We have options :
+  1. Simplest option should be to stay with the current architecture,and add only DailyCashFlow saved to the cloud as end of day closing procedure. OPTED TO USE THIS
+  2. C# accessing a local SQLite data. Or a .NET ORM Framework that allow the use of SQLITE/SQLExpress
+  3. Another option should be C# accessing Python Flask server, so that it can be easily scaled as branch server
+** Pricing
+   One pay forever use.
+** Features:
+   1. Easier Installation
+      FikrPOS Personal Plan is now easier to setup with the use of embedded SQLITE3 database. From user point of view, it just works! No need another IT tech support to help user install this feature.
+
+** Upgrading to Cloud Plan
+  This describe how a personal plan can be upgraded to cloud plan
+  In simplest task : connecting personal installation to desktop. If it is not a branch system, then the setup is as simple as connecting to cloud account. If in the other hand, it is a branch/multi user system, than the current SQLITE database must be upgraded to MSSQL Server
+*** Prerequisites
+  Download and installing the app
+  

@@ -1,17 +1,4 @@
-
 FikrPOS : An Elegant Cloud Based Point of Sales Solution for You
-* Technologies
-** Server Python on Redhat Openshift
-Komponen
-   Menerima kiriman rekap transaksi harian
-   Menyediakan data terpusat dari laporan transaksi semua branches.  
-   Menampilkan laporan secara grafik yang informatif
-   Menggunakan Pyramid + PostgreSQL di Herokuapp
-   Berkomunikasi ke klien via JSON
-** Klien C# Desktop run on Windows
-  Mengirimkan data transaksi ke pusat
-  Berkomunikasi ke server via JSON
-
 * User Cards
 ** DONE [001] Aplikasi Fikrposdc run locally and synched to Cloud, vice versa
    Aplikasi sudah bisa berjalan baik secara lokal/cloud : db dibuat setiap run
@@ -47,22 +34,6 @@ Komponen
 *** DONE Dashboard Prototyping
 *** DONE Apply branch list to dashboard
 **** DONE Understanding how to transfer JSON data to Morris.Line method. A daily/weekly/monthly sales of all branches
-** [004] Security of API
-*** Verifikasi ID dari Client ke Server
-   Klien mengirimkan username dan password via json ke server herokuapp
-   Server menerima dan mencocokkannya dengan database, mengirimkan json true/false jika benar.
-   URL /api/log/in/{username}/{encyrpted password}
-** [011] Sempurnakan CRUD paginated table
-*** DONE Menggunakan ajax u/ penghapusan data
-*** DONE Reload via AJAX
-*** Paginasi
-*** Search box
-** [012] Pengiriman report data transaksi harian
-   Bisa dibuat seamless semacam DropBox, atau by action dengan tombol closing and update to server di akhir sesi
-   Fokus ke pengaturan sesi terlebih dahulu
-
-* Minor Things
-** Select navigation of module
 * Bug Fixing
 ** DONE That jquery.pott.. things
 
